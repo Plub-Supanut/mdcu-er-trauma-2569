@@ -247,6 +247,10 @@ h1{
 
 /* ---------- nav ---------- */
 nav{
+  --nav-active:#8B1E31;
+  --nav-active-glow:rgba(139,30,49,.28);
+  --nav-progress:#806124;
+  --nav-progress-glow:rgba(128,97,36,.18);
   position:sticky;
   top:0;
   z-index:40;
@@ -256,7 +260,13 @@ nav{
   border-bottom:1px solid var(--line);
 }
 @media (prefers-color-scheme: dark){
-  nav{background:rgba(10,13,17,.88)}
+  nav{
+    --nav-active:#D4556B;
+    --nav-active-glow:rgba(212,85,107,.32);
+    --nav-progress:var(--gold-2);
+    --nav-progress-glow:rgba(226,200,143,.20);
+    background:rgba(10,13,17,.88);
+  }
 }
 .nav-inner{
   max-width:1080px;
@@ -295,7 +305,8 @@ nav a::after{
   bottom:0;
   height:2px;
   border-radius:2px 2px 0 0;
-  background:linear-gradient(90deg,var(--crimson),var(--gold));
+  background:var(--nav-active);
+  box-shadow:0 -1px 8px -1px var(--nav-active-glow);
   opacity:0;
   transform:scaleX(.4);
   transition:opacity .22s var(--ease),transform .22s var(--ease);
@@ -309,13 +320,16 @@ nav a:focus-visible{outline:2px solid var(--focus);outline-offset:-4px;border-ra
 }
 .nav-progress{
   position:absolute;
+  top:0;
   left:0;
-  bottom:-1px;
   height:2px;
   width:0;
   z-index:2;
-  background:linear-gradient(90deg,var(--crimson),var(--gold-2));
+  background:var(--nav-progress);
+  border-radius:0 2px 2px 0;
+  box-shadow:0 1px 4px var(--nav-progress-glow);
   transition:width .1s linear;
+  pointer-events:none;
 }
 
 /* ---------- layout ---------- */
