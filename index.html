@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ER &amp; Trauma 2569 · คู่มือปฏิบัติงาน</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=IBM+Plex+Serif+Thai:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#151a21; --muted:#5c6874; --line:#e4e7eb; --bg:#faf9f6; --card:#fff;
+  --accent:#a8122c; --accent-soft:#fdf2f4; --teal:#0f6f66; --amber:#9a5b06;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Thai",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.7;font-size:16.5px;-webkit-font-smoothing:antialiased}
+.hero{background:linear-gradient(140deg,#171a20 0%,#2b1014 55%,#4a1220 100%);color:#fff;padding:58px 28px 50px}
+.hero .wrap{max-width:1000px;margin:0 auto}
+.kicker{font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:#f0b3bd;margin:0 0 14px;font-weight:600}
+h1{font-family:"IBM Plex Serif Thai",serif;font-size:clamp(30px,4.4vw,46px);line-height:1.22;margin:0 0 14px;font-weight:600}
+.hero p{margin:0;color:#e8dfe1;max-width:70ch}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.hero .meta span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);padding:6px 12px;border-radius:999px;font-size:13.5px}
+nav{position:sticky;top:0;z-index:20;background:rgba(250,249,246,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{max-width:1000px;margin:0 auto;padding:10px 28px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:14px;padding:6px 11px;border-radius:8px}
+nav a:hover{background:#eef0f3;color:var(--ink)}
+.wrap{max-width:1000px;margin:0 auto;padding:0 28px}
+main{padding:42px 0 90px}
+section{margin:0 0 52px;scroll-margin-top:72px}
+h2{font-family:"IBM Plex Serif Thai",serif;font-size:26px;margin:0 0 6px;font-weight:600;letter-spacing:-.01em}
+h3{font-size:17px;margin:24px 0 8px;font-weight:600}
+.sub{color:var(--muted);margin:0 0 20px;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.card h3{margin:0 0 8px;font-size:16.5px;font-weight:600}
+.card p{margin:0;color:#39424d;font-size:15px}
+.tbl{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:15px}
+.tbl th{background:#f3f4f6;text-align:left;padding:11px 14px;font-weight:600;font-size:14px;color:#3a4350;border-bottom:1px solid var(--line)}
+.tbl td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl tr:hover td{background:#fcfcfb}
+.chip{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12.5px;background:#f1f3f6;border:1px solid var(--line);color:#414b57;margin:2px 4px 2px 0}
+.chip.red{background:var(--accent-soft);border-color:#f2ccd4;color:var(--accent)}
+.chip.teal{background:#eefaf8;border-color:#c9ece7;color:var(--teal)}
+.chip.amber{background:#fdf7ec;border-color:#f0e0c4;color:var(--amber)}
+.callout{border-left:4px solid var(--accent);background:var(--accent-soft);padding:15px 18px;border-radius:0 12px 12px 0;margin:16px 0;font-size:15px}
+.callout.amber{border-color:#b45309;background:#fffaef}
+.callout.teal{border-color:#0f766e;background:#effbf9}
+.callout strong{font-weight:600}
+ol,ul{padding-left:22px}
+li{margin:5px 0}
+.daylist{border-left:2px solid var(--line);margin-left:8px;padding-left:0}
+.day{display:grid;grid-template-columns:104px 1fr;gap:16px;padding:12px 0 12px 16px;border-bottom:1px dashed var(--line);position:relative}
+.day:last-child{border-bottom:0}
+.day::before{content:"";position:absolute;left:-7px;top:20px;width:11px;height:11px;border-radius:50%;background:#fff;border:2px solid var(--accent)}
+.day.off::before{border-color:#c2c9d0;background:#f3f5f7}
+.day.off{opacity:.55}
+.day .when{font-size:14px;color:var(--muted);font-weight:500;padding-top:1px}
+.day .what strong{display:block;font-size:15.5px;font-weight:600}
+.day .what span{font-size:14.5px;color:#4a545f}
+.check{display:flex;gap:10px;align-items:flex-start;padding:8px 0;font-size:15px;cursor:pointer}
+.check input{margin-top:5px;width:17px;height:17px;accent-color:var(--accent)}
+.check.done{color:#98a1ab;text-decoration:line-through}
+.appendix{border-top:3px solid var(--line);padding-top:14px}
+.appendix h2{font-size:23px}
+footer{border-top:1px solid var(--line);padding:26px 0 60px;color:var(--muted);font-size:13.5px}
+.btn{position:fixed;right:20px;bottom:20px;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:12px 20px;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;box-shadow:0 8px 24px rgba(168,18,44,.28);z-index:30}
+.btn:hover{filter:brightness(1.07)}
+@media print{
+  nav,.btn{display:none}
+  .hero{background:#fff;color:#000;padding:0 0 24px}
+  .hero p,.hero .meta span{color:#333}
+  .hero .meta span{border-color:#ccc}
+  body{background:#fff;font-size:11pt}
+  section{break-inside:avoid-page;margin-bottom:26px}
+  .card,.tbl{break-inside:avoid}
+  a{color:inherit;text-decoration:none}
+}
+@media (max-width:640px){
+  .hero{padding:40px 18px 34px}.wrap{padding:0 18px}
+  .grid.two{grid-template-columns:1fr}
+  .day{grid-template-columns:1fr;gap:2px}
+  body{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Year 5 · Block 2 · 3000539 Emergency Medicine I</p>
+    <h1>ER &amp; Trauma · คู่มือปฏิบัติงาน</h1>
+    <p>กฎเวร การประเมินผล วอร์ด G-trauma กฎในห้องฉุกเฉิน โซนการทำงาน และหัวข้อที่ใช้สอบ</p>
+    <div class="meta">
+      <span>2–29 พ.ย. 2569</span>
+      <span>กลุ่ม 8 (C3–C4) · 22 คน</span>
+      <span>เลขที่ 9 · TE809 · ศุภณัฐ (Plub)</span>
+      <span>ER: ภส.1A · Ward: G-trauma 16A1</span>
+    </div>
+  </div>
+</header>
+
+<nav><div class="wrap">
+  <a href="#overview">ภาพรวม</a>
+  <a href="#score">การประเมินผล</a>
+  <a href="#shift">เวร</a>
+  <a href="#ward">วอร์ด</a>
+  <a href="#rules">กฎใน ER</a>
+  <a href="#zones">โซน</a>
+  <a href="#topics">หัวข้อสอบ</a>
+  <a href="#contact">ติดต่อ</a>
+  <a href="#check">Checklist</a>
+  <a href="#appendix">ภาคผนวก</a>
+</div></nav>
+
+<main class="wrap">
+
+<section id="overview">
+  <h2>ภาพรวมรายวิชา</h2>
+  <table class="tbl">
+    <tr><th style="width:30%">รายการ</th><th>รายละเอียด</th></tr>
+    <tr><td>รหัส / ชื่อ</td><td>3000539 EM 1 เวชศาสตร์ฉุกเฉิน 1 · 2 (1-2-3) หน่วยกิต · Year Course</td></tr>
+    <tr><td>สถานที่</td><td>หอผู้ป่วยฉุกเฉิน อาคารภูมิสิริมังคลานุสรณ์ (ภส.1A) และวอร์ด G-trauma 16A1</td></tr>
+    <tr><td>ระยะเวลา</td><td>4 สัปดาห์ · 2–29 พ.ย. 2569</td></tr>
+    <tr><td>รูปแบบ</td><td>workplace-based learning ภายใต้การกำกับของแพทย์ประจำบ้านและอาจารย์</td></tr>
+    <tr><td>ชั่วโมงเรียน</td><td>บรรยายออนไลน์ 13 · workshop/discussion 4 · bedside 15 · ปฏิบัติงานคลินิก 49 · SDL 8</td></tr>
+    <tr><td>รายวิชาที่เรียนร่วม</td><td>3000545 เวชศาสตร์ผู้ป่วยนอกฯ · 3000505 Chronic &amp; Palliative Care · 3000537 วิทยาการบาดเจ็บ</td></tr>
+  </table>
+</section>
+
+<section id="score">
+  <h2>การประเมินผล</h2>
+  <p class="sub">เกณฑ์ไม่ชดเชยกัน ต้องผ่าน MPL ทุกส่วน</p>
+  <div class="grid two">
+    <div class="card"><h3>ความรู้ 40 คะแนน</h3><p>MCQ 30 ข้อ = 30 · SAQ 5 ข้อ = 10<br><span class="chip">modified Ebel</span></p></div>
+    <div class="card"><h3>สถานการณ์จำลอง 30 คะแนน</h3><p>OSCE 2 สถานี = 20 · Case discussion (bedside) = 10<br><span class="chip">modified Angoff</span></p></div>
+    <div class="card"><h3>พฤติกรรม 30 คะแนน</h3><p>Longitudinal observation by residents 15 · On-duty attendance 15<br><span class="chip">Angoff หรือ 60%</span></p></div>
+    <div class="card"><h3>Assignment</h3><p>IPC for patient safety · S/U · 19 พ.ย. 08.00–12.00</p></div>
+  </div>
+  <div class="callout amber">
+    <strong>เงื่อนไขการได้ F:</strong> คะแนนส่วนใดส่วนหนึ่งต่ำกว่า MPL · แก้ตัวได้ 1 ครั้งต่อการประเมิน (MCQ, SAQ, OSCE) ถ้าแก้แล้วยังไม่ผ่านถือเป็น F<br>
+    <strong>เวลาเรียน:</strong> ขาดเกิน 20% ไม่มีสิทธิ์เข้าสอบ · มาสายหรือปฏิบัติงานไม่ครบเวลามากกว่า 1 ครั้ง อาจได้ U ในหัวข้อ professionalism<br>
+    <strong>ความซื่อสัตย์:</strong> ลงชื่อแทน ลอกรายงาน ให้ผู้อื่นอยู่เวรแทน หรือบันทึกข้อมูลไม่ตรงความจริง ได้ 0 ในส่วนนั้นและถูกพิจารณาตัดคะแนน
+  </div>
+</section>
+
+<section id="shift">
+  <h2>เวร</h2>
+  <p class="sub">สแกนนิ้วเข้าและออกทุกเวร · หลังลงเวรส่งใบประเมินการปฏิบัติงานให้แพทย์ประจำบ้านเซ็น</p>
+  <table class="tbl">
+    <tr><th>วัน</th><th>เวลา</th><th>โซน</th><th>หมายเหตุ</th></tr>
+    <tr><td>จ. 2 พ.ย.</td><td>08.00–16.00<br>16.00–24.00</td><td>Non-trauma</td><td>Orientation 08.15 รับเวรก่อน 08.00</td></tr>
+    <tr><td>อา. 8 พ.ย.</td><td>08.00–16.00</td><td>Non-trauma</td><td>วันหยุด ไม่ต้องพรีเคส ยกเว้นอาจารย์ปวีณอร</td></tr>
+    <tr><td>จ. 9 พ.ย.</td><td>08.00–16.00<br>16.00–24.00</td><td>Trauma<br>Non-trauma</td><td>วันเดียวอยู่ทั้งสองโซน</td></tr>
+    <tr><td>พฤ. 19 พ.ย.</td><td>16.00–24.00</td><td>Non-trauma</td><td>มี IPC 08.00–12.00 และ EBM 13.00–16.00 ก่อนขึ้นเวร</td></tr>
+    <tr><td>ส. 21 พ.ย.</td><td>08.00–16.00<br>16.00–24.00</td><td>Non-trauma</td><td>วันหยุด ไม่ต้องพรีเคส</td></tr>
+    <tr><td>จ. 23 พ.ย.</td><td>08.00–16.00<br>16.00–24.00</td><td>Non-trauma</td><td>เช้าวันถัดมาราวน์ 06.45</td></tr>
+    <tr><td>พ. 25 พ.ย.</td><td>16.00–24.00</td><td>Non-trauma</td><td>วอร์ด 08.00–16.00 ต่อด้วยเวร</td></tr>
+    <tr><td>พฤ. 26 พ.ย.</td><td>16.00–24.00</td><td>Non-trauma</td><td>ว่างช่วงเช้า มี EBM 13.00–16.00</td></tr>
+  </table>
+  <div class="callout">
+    <strong>มาสาย:</strong> ต่ำกว่า 10 นาที อยู่เวรเพิ่ม 1 ชั่วโมง · 10–30 นาที เพิ่ม 4 ชั่วโมง · เกิน 30 นาที เพิ่ม 1 เวร · ขาดเวรโดยไม่แจ้ง เพิ่ม 2 เวร<br>
+    <strong>ขาดหรือป่วย:</strong> แจ้งคุณสุรชัย 081-5526254 และแพทย์ประจำบ้านหรืออาจารย์ก่อนถึงเวลาเวร<br>
+    <strong>แลกเวร:</strong> แลกข้ามโซน trauma กับ non-trauma ไม่ได้ · จำนวนนิสิตต่อเวร 4–6 คน
+  </div>
+</section>
+
+<section id="ward">
+  <h2>วอร์ด G-trauma 16A1</h2>
+  <p class="sub">อังคาร พุธ ศุกร์ 08.00–16.00 · ทั้งกลุ่ม 22 คนต้องอยู่เมื่ออาจารย์มาตรวจ</p>
+  <div class="grid two">
+    <div class="card"><h3>ราวน์เช้าของกลุ่ม 7–11</h3><p>06.45–08.00<br><span class="chip red">พ. 4 พ.ย.</span><span class="chip red">ศ. 13 พ.ย.</span><span class="chip red">อ. 24 พ.ย.</span></p></div>
+    <div class="card"><h3>การรับเคส</h3><p>นิสิตปี 5 รับและเล่าเคสคนละ 1 เคส เลือกเคสใดก็ได้ · พี่แพรเริ่มราวน์ประมาณ 07.00–07.15</p></div>
+    <div class="card"><h3>ลำดับการเล่าเคส</h3><p>CC → Dx → การผ่าตัดหรือหัตถการ → การรักษาปัจจุบัน → สิ่งที่รออยู่<br>ไม่ต้องเล่าเป็น SOAP</p></div>
+    <div class="card"><h3>สิ่งที่ต้องเตรียม</h3><p>รู้ว่าใครรับเตียงไหน · อย่าขาดราวน์ · อย่าลืมรับเคส · ติดต่อชีพทางเอกเทินเท่านั้น</p></div>
+  </div>
+</section>
+
+<section id="rules">
+  <h2>กฎในห้องฉุกเฉิน</h2>
+  <div class="grid two">
+    <div class="card"><h3>การแต่งกาย</h3><p>ห้ามรองเท้าแตะและกางเกงยีนส์ · นิสิตหญิงใส่กางเกงขายาวปิดข้อเท้า</p></div>
+    <div class="card"><h3>อุปกรณ์ป้องกัน</h3><p>สวม mask และ face shield ตลอดเวลาที่อยู่ในห้องฉุกเฉิน · ของมีคมทิ้งในภาชนะที่จัดไว้เท่านั้น</p></div>
+    <div class="card"><h3>การถ่ายภาพ</h3><p>ห้ามถ่ายรูปผู้ป่วยหรือสถานที่ภายในห้องฉุกเฉิน</p></div>
+    <div class="card"><h3>การสั่งการรักษา</h3><p>ห้ามสั่งการรักษาโดยไม่มีแพทย์ประจำบ้านหรืออาจารย์กำกับ · หัตถการ invasive ต้องขอ informed consent</p></div>
+    <div class="card"><h3>Blood gas</h3><p>ใช้กับผู้ป่วยใน ER เท่านั้น · ใส่ heparin และอุปกรณ์กัน clot · ห้ามส่ง body fluid อื่นหรือเลือดจากวอร์ดอื่น · สแกน barcode ห้าม key HN เอง</p></div>
+    <div class="card"><h3>การพักอาหาร</h3><p>ไม่เกิน 1 ชั่วโมงต่อเวร · แบ่งกันไป ไม่ปล่อยให้ว่างทั้งทีม</p></div>
+  </div>
+  <div class="callout amber">
+    <strong>Bedside teaching:</strong> จันทร์และพฤหัสช่วงเช้า และช่วงบ่ายของวันทำการตามที่นัดกับอาจารย์ · นิสิตโซน non-trauma เตรียมและนำเสนอ 2–3 เคส · ต้องขออนุญาตผู้ป่วยก่อนพาอาจารย์ไปราวน์<br>
+    <strong>ข้อกำหนด:</strong> ต้องนำเสนอเคสกับอาจารย์เวชศาสตร์ฉุกเฉินอย่างน้อย 1 เคสภายใน 4 สัปดาห์ โดยใช้แบบประเมินของฝ่ายฯ · ไม่นำเสนอถือว่าตก
+  </div>
+</section>
+
+<section id="zones">
+  <h2>โซนการทำงาน</h2>
+  <table class="tbl">
+    <tr><th>โซน</th><th>ที่ตั้ง</th><th>เนื้อหาที่ได้ฝึก</th></tr>
+    <tr><td>Non-trauma + Resuscitation bay</td><td>ด้านหน้า</td><td>primary survey, การซักประวัติและตรวจร่างกาย, การวินิจฉัยแยกโรค, การสั่ง Lab และ imaging, ACLS, หัตถการ (paracentesis, ABG, NG lavage, ultrasound, RSI), เวชระเบียน</td></tr>
+    <tr><td>Trauma</td><td>ด้านหน้า</td><td>ATLS, เย็บแผลและใส่เฝือก, procedural sedation, การอ่าน X-ray และ CT, FAST</td></tr>
+    <tr><td>ER-OU (observation unit, ต่ำกว่า 72 ชั่วโมง)</td><td>ชั้น M อาคารภูมิสิริ</td><td>การติดตามอาการ การประเมินซ้ำ และการวางแผนรักษาต่อ</td></tr>
+    <tr><td>Triage</td><td>ด้านหน้าสุด</td><td>ระบบคัดกรองและลำดับความเร่งด่วน</td></tr>
+    <tr><td>EMS</td><td>ด้านหน้าและชั้น M</td><td>การประสานงานกับหน่วยกู้ชีพเอราวัณและนเรศวร</td></tr>
+  </table>
+</section>
+
+<section id="topics">
+  <h2>หัวข้อที่ใช้สอบ</h2>
+  <p class="sub">ตามที่ระบุในเอกสารปฐมนิเทศของรายวิชา</p>
+  <div class="grid two">
+    <div class="card">
+      <h3>e-lecture (10 หัวข้อ)</h3>
+      <p>
+        <span class="chip">Principle of Emergency Medicine</span><span class="chip">Basic &amp; advanced cardiac life support</span><span class="chip">Approach to chest pain</span><span class="chip">Emergency airway management</span><span class="chip">Emergency Medicine Service</span><span class="chip">Emergency toxicology</span><span class="chip">Approach to dyspnea</span><span class="chip">Initial management of shock</span><span class="chip">Environmental emergency</span><span class="chip">Hypertensive emergency</span>
+      </p>
+    </div>
+    <div class="card">
+      <h3>SDL (9 หัวข้อ)</h3>
+      <p>
+        <span class="chip">Syncope</span><span class="chip">Hyperglycemic crisis และ hypoglycemia</span><span class="chip">Acute abdomen</span><span class="chip">SVC obstruction, hemolytic crisis, incompatible transfusion</span><span class="chip">Sepsis</span><span class="chip">Anuria/oliguria, urinary retention, hyperkalemia</span><span class="chip">Coma, convulsion, increased ICP</span><span class="chip">Pneumothorax</span><span class="chip">Bleeding in pregnancy, eclampsia</span>
+      </p>
+    </div>
+  </div>
+  <div class="callout teal"><strong>สื่อประกอบ:</strong> คอร์ส 3000537.C มีวิดีโอบรรยาย 5 เรื่อง (pediatric trauma, traumatic brain injury, traumatic spine injury, scrub movie, suture &amp; knot) · คอร์ส 3000539 ยังไม่มีไฟล์บรรยายใน Media gallery มีเฉพาะวิดีโอ ACS และ chest pain ของอาจารย์ขวัญศิริใน Course Materials</div>
+</section>
+
+<section id="contact">
+  <h2>ติดต่อ</h2>
+  <table class="tbl">
+    <tr><th>เรื่อง</th><th>ผู้รับผิดชอบ</th><th>ช่องทาง</th></tr>
+    <tr><td>ธุรการรายวิชา</td><td>คุณสโรชา (พี่เบียร์)</td><td>02-649-4000 ต่อ 83058 · 063-797-1033</td></tr>
+    <tr><td>ประสานงานรายวิชา</td><td>อ.นรวิชญ์ กิจไพศาลรัตนา</td><td>083-0922999 · norawit.k@chula.ac.th</td></tr>
+    <tr><td>ขาดเวรและเหตุฉุกเฉิน</td><td>คุณสุรชัย เพียรเพชรเลิศ</td><td>081-5526254 · LINE surachaikun</td></tr>
+  </table>
+</section>
+
+<section id="check">
+  <h2>Checklist</h2>
+  <label class="check"><input type="checkbox" data-k="c1"> เตรียมเคสนำเสนอให้พี่แพร (4, 13, 24 พ.ย.)</label>
+  <label class="check"><input type="checkbox" data-k="c2"> ยืนยันเรื่องใบประเมินการปฏิบัติงานทุกเวรกับแพทย์ประจำบ้าน</label>
+  <label class="check"><input type="checkbox" data-k="c3"> นำเสนอเคสกับอาจารย์อย่างน้อย 1 ครั้งภายใน 4 สัปดาห์</label>
+  <label class="check"><input type="checkbox" data-k="c4"> เข้าร่วม IPC for patient safety 19 พ.ย. 08.00–12.00</label>
+  <label class="check"><input type="checkbox" data-k="c5"> ตรวจสอบว่ามีวิดีโอบรรยายเพิ่มใน Media gallery หรือยัง</label>
+  <label class="check"><input type="checkbox" data-k="c6"> ตรวจสอบตารางราวน์และเวลา activity ของอาจารย์ประจำวัน</label>
+</section>
+
+<section id="appendix" class="appendix">
+  <h2>ภาคผนวก · ตารางทบทวน (เสริม)</h2>
+  <p class="sub">ไม่ได้เป็นส่วนหนึ่งของการปฏิบัติงาน ใช้เมื่อมีเวลาในเวรหรือช่วงเช้าที่ว่าง</p>
+  <div class="daylist">
+    <div class="day"><div class="when">จ. 2 พ.ย.<br>เวร 08–24</div><div class="what"><strong>Principle of Emergency Medicine, EMS</strong><span>ช่วงที่ผู้ป่วยน้อยใน ER</span></div></div>
+    <div class="day"><div class="when">พ. 3, พ. 6</div><div class="what"><strong>Primary และ secondary survey</strong><span>วอร์ด G-trauma · ATLS บท 1–2</span></div></div>
+    <div class="day off"><div class="when">พฤ. 5, ส. 7</div><div class="what"><strong>วันว่าง</strong><span>ไม่มีการกำหนดการอ่าน</span></div></div>
+    <div class="day"><div class="when">อา. 8 พ.ย.<br>เวร 08–16</div><div class="what"><strong>Shock, dyspnea</strong></div></div>
+    <div class="day"><div class="when">จ. 9 พ.ย.<br>เวร trauma</div><div class="what"><strong>Traumatic brain injury</strong><span>วิดีโอ 3000537.C · ต่อเนื่องที่วอร์ด 10 พ.ย.</span></div></div>
+    <div class="day"><div class="when">พ. 11 พ.ย.</div><div class="what"><strong>Traumatic spine injury</strong><span>เฉพาะส่วนการตรวจและ clearance</span></div></div>
+    <div class="day off"><div class="when">พฤ. 12 – จ. 16</div><div class="what"><strong>วันว่าง</strong><span>ไม่มีการกำหนดการอ่าน</span></div></div>
+    <div class="day"><div class="when">ส. 21 พ.ย.<br>เวร 08–24</div><div class="what"><strong>Toxicology, environmental emergency</strong></div></div>
+    <div class="day"><div class="when">จ. 23 พ.ย.<br>เวร 08–24</div><div class="what"><strong>Hypertensive emergency, syncope</strong></div></div>
+    <div class="day"><div class="when">พฤ. 26 พ.ย.<br>08.00–11.00</div><div class="what"><strong>ACLS และ airway management</strong><span>ช่วงเช้าที่ว่างก่อน EBM และเวร</span></div></div>
+    <div class="day off"><div class="when">ส. 28 – อา. 29</div><div class="what"><strong>วันว่าง</strong><span>สิ้นสุดบล็อก</span></div></div>
+  </div>
+
+  <h3>ช่วงทบทวนก่อนสอบ 30 พ.ย. – 23 ธ.ค.</h3>
+  <table class="tbl">
+    <tr><th>ช่วง</th><th>เนื้อหา</th><th>ผลลัพธ์</th></tr>
+    <tr><td>30 พ.ย. – 6 ธ.ค.</td><td>SDL 9 หัวข้อ</td><td>สรุปหัวข้อละ 1 หน้า: red flag, initial management, ยาหลัก</td></tr>
+    <tr><td>7–13 ธ.ค.</td><td>e-lecture และวิดีโอบรรยายที่ยังไม่ครบ</td><td>ทำข้อสอบ MCQ วันละ 20 ข้อ</td></tr>
+    <tr><td>14–20 ธ.ค.</td><td>OSCE และ case discussion</td><td>ซ้อมนำเสนอเคส 3 เคส</td></tr>
+    <tr><td>21–23 ธ.ค.</td><td>ทบทวนหัวข้อที่ยังอ่อน</td><td>ทำ mock MCQ 1 ชุด</td></tr>
+  </table>
+</section>
+
+<footer>
+  ที่มา: myCourseVille course 89649 · Course syllabus 3000539 ปี 2569 · เอกสารปฐมนิเทศ ER (ไฟล์ปี 2568) · ตารางเวรกลุ่ม 8 แท็บ “22 คน”<br>
+  ไฟล์ในเครื่อง: <code>Documents\MDCU\er-trauma\</code> · ปรับปรุง 1 พ.ย. 2569
+</footer>
+</main>
+
+<button class="btn" onclick="window.print()">พิมพ์ / บันทึก PDF</button>
+<script>
+document.querySelectorAll('.check input').forEach(function(b){
+  var k='er68-'+b.dataset.k;
+  if(localStorage.getItem(k)==='1'){b.checked=true;b.closest('.check').classList.add('done');}
+  b.addEventListener('change',function(){
+    localStorage.setItem(k,b.checked?'1':'0');
+    b.closest('.check').classList.toggle('done',b.checked);
+  });
+});
+</script>
+</body>
+</html>
