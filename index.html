@@ -858,25 +858,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
     overflow:visible;
   }
   #overview .tbl{display:block;width:100%;min-width:0;font-size:15px}
-  #overview .tbl thead{display:block}
-  #overview .tbl thead tr{
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    padding:0 4px 10px;
-  }
-  #overview .tbl th{
-    display:block;
-    position:static;
-    padding:0;
-    background:transparent;
-    border:0;
-    font-size:10.5px;
-    letter-spacing:.11em;
-    color:var(--faint);
-    line-height:1.4;
-  }
-  #overview .tbl th:last-child{text-align:right}
+  /* the stacked rows carry their own labels, so drop the duplicated header row */
+  #overview .tbl thead{display:none}
   #overview .tbl tbody{display:block}
   #overview .tbl tbody tr{
     display:block;
