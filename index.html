@@ -434,10 +434,19 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   .appendix{padding:24px 18px 20px;border-radius:var(--r-md)}
   .day{grid-template-columns:1fr;gap:2px;padding-left:16px}
   .day::before{top:17px}
-  .btn{right:14px;bottom:14px;padding:10px 15px;font-size:12.5px;gap:7px}
-  .tbl{font-size:14px;min-width:640px}
-  .tbl-wrap{box-shadow:var(--sh-1),inset -16px 0 14px -14px rgba(14,17,22,.22)}
-  .tbl th,.tbl td{padding:12px 14px}
+  .btn{position:static;margin:8px auto 36px;display:flex;width:max-content}
+  .tbl{font-size:13.8px;min-width:0}
+  .tbl th{font-size:10.5px;letter-spacing:.06em;padding:10px 12px;white-space:normal}
+  .tbl td{padding:11px 12px}
+  .tbl td:first-child,.tbl th:first-child{padding-left:16px}
+  /* ตารางภาพรวม: ซ้อน label/value แทนการเลื่อนแนวนอน */
+  #overview .tbl,#overview .tbl tbody,#overview .tbl tr,#overview .tbl td{display:block;width:100%}
+  #overview .tbl thead{display:none}
+  #overview .tbl tr{border-bottom:1px solid var(--line);padding:10px 0}
+  #overview .tbl tbody tr:last-child{border-bottom:0}
+  #overview .tbl td{border:0;padding:2px 18px}
+  #overview .tbl tbody tr:nth-child(even) td{background:transparent}
+  #overview .tbl td:first-child{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;padding-top:6px}
   footer{padding:26px 0 8px}
 }
 
