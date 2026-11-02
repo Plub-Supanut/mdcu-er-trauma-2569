@@ -185,6 +185,41 @@ h1{
   font-weight:400;
   text-wrap:pretty;
 }
+.course-strip{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:18px 0 0;
+}
+.course-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:7px 13px 7px 10px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;
+  background:rgba(255,255,255,.055);
+  color:rgba(246,242,234,.88);
+  font-size:12.5px;
+  font-weight:500;
+  line-height:1.5;
+  letter-spacing:.015em;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  white-space:nowrap;
+}
+.course-code{
+  display:inline-flex;
+  align-items:center;
+  min-height:22px;
+  padding:0 7px;
+  border:1px solid rgba(201,169,97,.44);
+  border-radius:999px;
+  color:var(--gold-2);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.055em;
+  font-variant-numeric:tabular-nums;
+}
 .stats{display:flex;flex-wrap:wrap;align-items:flex-end;margin:38px 0 0;gap:0}
 .stat{position:relative;padding:0 34px 0 0;margin:0 34px 6px 0}
 .stat:last-child{padding-right:0;margin-right:0}
@@ -819,6 +854,292 @@ section.appendix+section{border-top:0;padding-top:0}
 .closing p{margin:0;font-size:13.8px;line-height:1.72;color:var(--body)}
 .closing p+p{margin-top:7px;color:var(--muted)}
 
+/* ---------- course parts / comparison / scoreboard ---------- */
+section.part{
+  --part-accent:var(--crimson);
+  --part-wash:var(--crimson-soft);
+  --part-line:var(--crimson-line);
+  position:relative;
+  margin-top:22px;
+  padding-top:0;
+  padding-bottom:62px;
+  border-top:0;
+}
+section.part.part--trauma{
+  --part-accent:var(--gold);
+  --part-wash:var(--amber-soft);
+  --part-line:rgba(128,84,5,.22);
+}
+section.part.part--plan{
+  --part-accent:var(--teal);
+  --part-wash:var(--teal-soft);
+  --part-line:rgba(13,107,98,.22);
+}
+.part-open{
+  position:relative;
+  display:grid;
+  grid-template-columns:92px minmax(0,1fr);
+  gap:0 26px;
+  align-items:start;
+  overflow:hidden;
+  padding:28px 30px 27px;
+  border:1px solid var(--line);
+  border-radius:var(--r-lg);
+  background:
+    radial-gradient(130% 190% at 0% 0%,var(--part-wash) 0%,transparent 60%),
+    var(--paper);
+  box-shadow:var(--sh-1),inset 0 1px 0 var(--card-highlight);
+}
+.part-open::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:3px;
+  background:var(--part-accent);
+  opacity:.82;
+}
+.part-mark{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:9px;
+  min-height:92px;
+  padding-right:22px;
+  border-right:1px solid var(--part-line);
+}
+.part-letter{
+  font-family:var(--serif);
+  font-size:60px;
+  font-weight:600;
+  line-height:1;
+  letter-spacing:-.04em;
+  color:var(--part-accent);
+}
+.part-index{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.16em;
+  line-height:1;
+  color:var(--gold);
+  font-variant-numeric:tabular-nums;
+}
+.part-copy{min-width:0}
+.part-open h2{
+  margin:0;
+  font-size:clamp(25px,3.1vw,34px);
+  line-height:1.34;
+  letter-spacing:-.018em;
+}
+.part-open .sub{
+  grid-column:auto;
+  margin-top:7px;
+  max-width:74ch;
+}
+.part-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:19px;
+}
+.part-nav a{
+  display:inline-flex;
+  align-items:center;
+  min-height:28px;
+  padding:4px 10px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:var(--ivory-2);
+  color:var(--muted);
+  font-size:11.5px;
+  font-weight:500;
+  line-height:1.5;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:color .18s var(--ease),border-color .18s var(--ease),background-color .18s var(--ease);
+}
+.part-nav a:hover{
+  color:var(--ink);
+  border-color:var(--line-2);
+  background:var(--paper);
+}
+.part-nav a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.part > .subsec{
+  margin:34px 0 0;
+  padding:30px 0 0;
+  border-top:1px solid var(--line);
+  scroll-margin-top:84px;
+}
+.part > .subsec:last-child{padding-bottom:0}
+.part .subsec .sec-head{margin-bottom:18px}
+.part .subsec .sec-num{padding-top:7px}
+.sub-title{
+  margin:0;
+  font-family:var(--serif);
+  font-size:clamp(22px,2.35vw,28px);
+  font-weight:600;
+  line-height:1.4;
+  letter-spacing:-.012em;
+  color:var(--ink);
+  text-wrap:balance;
+}
+#ipc .ipc-panel{margin-top:0}
+#deliverables .closing{margin-top:0}
+
+.compare-wrap{max-height:none}
+.compare-table{min-width:0;table-layout:fixed}
+.compare-table .compare-key{width:16%}
+.compare-table th:nth-child(2),.compare-table th:nth-child(3){width:42%}
+.compare-table th{
+  vertical-align:top;
+  white-space:normal;
+  line-height:1.45;
+}
+.th-tag{
+  display:inline-block;
+  margin-bottom:4px;
+  padding:1px 7px;
+  border:1px solid var(--crimson-line);
+  border-radius:999px;
+  background:var(--crimson-soft);
+  color:var(--crimson-ink);
+  font-size:9.5px;
+  font-weight:600;
+  letter-spacing:.09em;
+  line-height:1.7;
+}
+.th-course{
+  display:block;
+  color:var(--ink);
+  font-size:12.5px;
+  font-weight:600;
+  letter-spacing:0;
+  line-height:1.5;
+  text-transform:none;
+}
+.compare-table td:first-child{font-weight:600;white-space:normal}
+.compare-table td{line-height:1.65}
+.cell-note{
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font-size:12.3px;
+  font-weight:400;
+  line-height:1.6;
+}
+.overview-notes{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:14px;
+}
+.overview-notes > div{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  gap:12px;
+  align-items:baseline;
+  padding:13px 16px;
+  border:1px solid var(--line);
+  border-radius:var(--r-sm);
+  background:var(--paper);
+  box-shadow:var(--sh-1);
+}
+.note-key{
+  color:var(--gold);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.09em;
+  line-height:1.5;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.overview-notes p{margin:0;color:var(--body);font-size:13.4px;line-height:1.65}
+.assess-detail{
+  margin-top:40px;
+  padding-top:29px;
+  border-top:1px dashed var(--line-2);
+}
+.assess-head h3{margin:0 0 3px;font-size:20px}
+.assess-head .sub{grid-column:auto;margin:0 0 17px;max-width:74ch}
+.assess-detail .callout{margin-top:18px}
+
+.score-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin-top:0;
+}
+.score-card{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:12px;
+  min-height:126px;
+  padding:18px 18px 17px;
+}
+.score-card::before{left:18px;width:24px}
+.score-card h3{margin:0;font-size:15px;line-height:1.48}
+.score-pct{
+  font-family:var(--serif);
+  font-size:33px;
+  font-weight:600;
+  line-height:1;
+  letter-spacing:-.025em;
+  color:var(--crimson-ink);
+  font-variant-numeric:tabular-nums;
+}
+.grade-block{
+  margin-top:14px;
+  padding:15px 16px 16px;
+  border:1px solid var(--line);
+  border-radius:var(--r-md);
+  background:var(--paper);
+  box-shadow:var(--sh-1),inset 0 1px 0 var(--card-highlight);
+}
+.scale-label{
+  margin:0 0 8px;
+  color:var(--muted);
+  font-size:10.5px;
+  font-weight:600;
+  letter-spacing:.1em;
+  line-height:1.5;
+  text-transform:uppercase;
+}
+.grade-scale{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:1px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:calc(var(--r-sm) - 2px);
+  background:var(--line);
+}
+.grade{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  align-items:center;
+  justify-content:center;
+  padding:10px 8px;
+  background:var(--paper);
+  text-align:center;
+}
+.grade-band{
+  color:var(--muted);
+  font-size:11.5px;
+  line-height:1.45;
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+.grade-letter{
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:19px;
+  font-weight:600;
+  line-height:1.25;
+}
+.grade:last-child .grade-letter{color:var(--crimson-ink)}
+
 /* ---------- footer ---------- */
 footer{
   border-top:1px solid var(--line);
@@ -902,6 +1223,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   .kicker::before{width:22px}
   h1{font-size:clamp(28px,8.2vw,40px);line-height:1.38;margin-bottom:16px}
   .lede{font-size:15.5px;line-height:1.75;max-width:none}
+  .course-strip{margin-top:14px;gap:6px}
+  .course-chip{font-size:11.5px;padding:6px 10px 6px 8px;gap:7px}
+  .course-code{min-height:20px;padding:0 5px;font-size:10px}
   .stats{margin-top:30px}
   .stat{padding-right:20px;margin-right:20px}
   .stat+.stat::before{left:-20px}
@@ -929,6 +1253,17 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   .slot-meta{padding-left:0}
   .slot-meta span{white-space:normal}
   .tl-key{padding-left:24px;font-size:10px;letter-spacing:.13em}
+  .part-open{grid-template-columns:58px minmax(0,1fr);gap:0 14px;padding:20px 18px 20px 19px;border-radius:var(--r-md)}
+  .part-mark{min-height:66px;padding-right:14px;gap:7px}
+  .part-letter{font-size:43px}
+  .part-index{font-size:9.5px}
+  .part-open h2{font-size:clamp(21px,5.8vw,26px);line-height:1.38}
+  .part-open .sub{font-size:13px;line-height:1.65;margin-top:6px}
+  .part-nav{margin-top:14px;gap:5px}
+  .part-nav a{min-height:26px;padding:3px 8px;font-size:10.5px}
+  .part > .subsec{margin-top:26px;padding-top:23px;scroll-margin-top:72px}
+  .part > .subsec .sec-head{margin-bottom:15px}
+  .sub-title{font-size:clamp(20px,5.5vw,24px)}
   .ipc-panel{padding:16px 17px 17px;font-size:13.4px}
   .ipc-code{font-size:12.6px}
   .ipc-run{font-size:12.1px}
@@ -946,45 +1281,86 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   .tbl th{white-space:normal;font-size:10.5px;line-height:1.45;letter-spacing:.06em}
   .tbl td{font-size:13.5px;line-height:1.62;overflow-wrap:break-word;word-break:normal}
 
-  /* overview becomes a stacked definition list */
-  #overview .tbl-wrap{
+  /* comparison table becomes one labelled card per fact */
+  #overview .compare-wrap{
     border:0;
     border-radius:0;
     background:transparent;
     box-shadow:none;
     overflow:visible;
   }
-  #overview .tbl{display:block;width:100%;min-width:0;font-size:15px}
-  /* the stacked rows carry their own labels, so drop the duplicated header row */
-  #overview .tbl thead{display:none}
-  #overview .tbl tbody{display:block}
-  #overview .tbl tbody tr{
+  #overview .compare-table{display:block;width:100%;min-width:0;font-size:13.2px}
+  #overview .compare-table colgroup{display:none}
+  #overview .compare-table thead{display:block;margin:0 0 7px}
+  #overview .compare-table thead tr{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  #overview .compare-table thead th:first-child{display:none}
+  #overview .compare-table thead th{
     display:block;
+    padding:0 4px 5px;
+    border:0;
+    background:transparent;
+    font-size:9.5px;
+    line-height:1.45;
+    letter-spacing:.055em;
+    color:var(--muted);
+  }
+  #overview .compare-table thead .th-tag{display:none}
+  #overview .compare-table thead .th-course{font-size:10.5px;line-height:1.45;color:var(--muted)}
+  #overview .compare-table tbody{display:block}
+  #overview .compare-table tbody tr{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:0 12px;
     background:var(--paper);
     border:1px solid var(--line);
     border-radius:var(--r-sm);
-    padding:13px 15px 14px;
+    padding:12px 14px 13px;
     margin:0 0 8px;
     box-shadow:var(--sh-1);
   }
-  #overview .tbl tbody tr:last-child{margin-bottom:0}
-  #overview .tbl td{
+  #overview .compare-table tbody tr:last-child{margin-bottom:0}
+  #overview .compare-table td{
     display:block;
+    min-width:0;
     padding:0;
     border:0;
     background:transparent !important;
+    font-size:12.8px;
+    line-height:1.62;
     overflow-wrap:anywhere;
   }
-  #overview .tbl td:first-child{
-    padding:0 0 3px;
-    font-family:var(--sans);
-    font-size:11px;
-    font-weight:600;
-    letter-spacing:.075em;
-    line-height:1.5;
+  #overview .compare-table td:first-child{
+    grid-column:1/-1;
+    margin:0 0 7px;
+    padding:0 0 7px;
+    border-bottom:1px dashed var(--line);
     color:var(--muted);
+    font-size:10.5px;
+    font-weight:600;
+    letter-spacing:.065em;
+    line-height:1.5;
+    white-space:normal;
   }
-  #overview .tbl td:last-child{font-size:15px;line-height:1.66;color:var(--body)}
+  #overview .compare-table td:nth-child(2){color:var(--ink);font-weight:500}
+  #overview .compare-table .cell-note{margin-top:4px;font-size:11.3px;line-height:1.55}
+  .overview-notes{grid-template-columns:1fr;gap:7px;margin-top:10px}
+  .overview-notes > div{grid-template-columns:1fr;gap:2px;padding:11px 14px}
+  .note-key{font-size:9.5px}
+  .overview-notes p{font-size:12.8px;line-height:1.6}
+  .assess-detail{margin-top:29px;padding-top:22px}
+  .assess-head h3{font-size:18px}
+  .assess-head .sub{font-size:13px;margin-bottom:14px}
+  .assess-detail .callout{margin-top:14px}
+  .score-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .score-card{min-height:106px;padding:14px 15px 15px;gap:9px}
+  .score-card::before{left:15px}
+  .score-card h3{font-size:13.8px;line-height:1.45}
+  .score-pct{font-size:27px}
+  .grade-block{padding:12px 12px 13px}
+  .grade-scale{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .grade{padding:9px 3px}
+  .grade-band{font-size:9.3px;line-height:1.4;white-space:normal}
+  .grade-letter{font-size:16px}
 
   /* zones read as a compact card list rather than a cramped three-column table */
   #zones .tbl-wrap{background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible}
@@ -1087,7 +1463,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   .closing p{font-size:13.3px}
 
   /* three-column reference tables wrap inside the viewport */
-  #contact .tbl,#appendix .tbl{
+  #contact .tbl,#plan .tbl{
     min-width:0;
     width:100%;
     table-layout:fixed;
@@ -1095,18 +1471,18 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   #contact .tbl th:nth-child(1){width:32%}
   #contact .tbl th:nth-child(2){width:30%}
   #contact .tbl th:nth-child(3){width:38%}
-  #appendix .tbl th:nth-child(1){width:28%}
-  #appendix .tbl th:nth-child(2){width:35%}
-  #appendix .tbl th:nth-child(3){width:37%}
-  #contact .tbl th,#appendix .tbl th{
+  #plan .tbl th:nth-child(1){width:28%}
+  #plan .tbl th:nth-child(2){width:35%}
+  #plan .tbl th:nth-child(3){width:37%}
+  #contact .tbl th,#plan .tbl th{
     padding-top:11px;
     padding-bottom:11px;
     font-size:10px;
     letter-spacing:.05em;
   }
-  #contact .tbl td,#appendix .tbl td{font-size:13px;line-height:1.6;padding-top:11px;padding-bottom:11px}
+  #contact .tbl td,#plan .tbl td{font-size:13px;line-height:1.6;padding-top:11px;padding-bottom:11px}
   #contact .tbl td:last-child{overflow-wrap:anywhere}
-  #appendix .tbl{font-size:13px}
+  #plan .tbl{font-size:13px}
 }
 @media (max-width:380px){
   .wrap{padding:0 16px}
@@ -1117,15 +1493,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   .tbl th,.tbl td{padding-left:10px;padding-right:10px}
 
   /* at the narrowest width the two remaining three-column tables reflow to stacked rows */
-  #contact .tbl,#appendix .tbl{display:block;width:100%;min-width:0}
-  #contact .tbl thead,#appendix .tbl thead{display:block}
-  #contact .tbl thead tr,#appendix .tbl thead tr{
+  #contact .tbl,#plan .tbl{display:block;width:100%;min-width:0}
+  #contact .tbl thead,#plan .tbl thead{display:block}
+  #contact .tbl thead tr,#plan .tbl thead tr{
     display:grid;
     grid-template-columns:repeat(3,minmax(0,1fr));
     gap:6px;
     padding:0 4px 10px;
   }
-  #contact .tbl th,#appendix .tbl th{
+  #contact .tbl th,#plan .tbl th{
     display:block;
     position:static;
     width:auto !important;
@@ -1138,8 +1514,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
     color:var(--faint);
     white-space:normal;
   }
-  #contact .tbl tbody,#appendix .tbl tbody{display:block}
-  #contact .tbl tbody tr,#appendix .tbl tbody tr{
+  #contact .tbl tbody,#plan .tbl tbody{display:block}
+  #contact .tbl tbody tr,#plan .tbl tbody tr{
     display:block;
     background:var(--paper);
     border:1px solid var(--line);
@@ -1148,8 +1524,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
     margin:0 0 8px;
     box-shadow:var(--sh-1);
   }
-  #contact .tbl tbody tr:last-child,#appendix .tbl tbody tr:last-child{margin-bottom:0}
-  #contact .tbl td,#appendix .tbl td{
+  #contact .tbl tbody tr:last-child,#plan .tbl tbody tr:last-child{margin-bottom:0}
+  #contact .tbl td,#plan .tbl td{
     display:block;
     padding:0;
     border:0;
@@ -1159,7 +1535,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
     overflow-wrap:break-word;
     word-break:normal;
   }
-  #contact .tbl td:first-child,#appendix .tbl td:first-child{
+  #contact .tbl td:first-child,#plan .tbl td:first-child{
     font-size:11px;
     font-weight:600;
     letter-spacing:.045em;
@@ -1167,8 +1543,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   }
   #contact .tbl td:nth-child(2){font-size:14px;color:var(--body);margin:2px 0 4px}
   #contact .tbl td:last-child{font-size:13px;color:var(--muted);overflow-wrap:anywhere}
-  #appendix .tbl td:nth-child(2){font-size:14px;color:var(--ink);font-weight:500;margin:2px 0 4px}
-  #appendix .tbl td:last-child{font-size:13px;color:var(--body)}
+  #plan .tbl td:nth-child(2){font-size:14px;color:var(--ink);font-weight:500;margin:2px 0 4px}
+  #plan .tbl td:last-child{font-size:13px;color:var(--body)}
 }
 
 /* ============================================================
@@ -1227,8 +1603,44 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   }
   .meta span{background:#fff;color:#222;font-size:8pt;padding:2mm 2.8mm}
   .meta span::before{background:#999}
+  .course-strip{margin:2.5mm 0 0;gap:1.5mm}
+  .course-chip{
+    padding:1.1mm 2.2mm;
+    border-color:#CCC;
+    background:#fff;
+    color:#222;
+    font-size:7.4pt;
+    box-shadow:none;
+  }
+  .course-code{border-color:#BBB;color:#555;font-size:6.8pt;min-height:0;padding:0 1.5mm}
 
   section{margin:0;padding:4mm 0 0 !important;border-top:.6pt solid #DCDCDC !important;break-inside:auto}
+  section.part{padding:0 0 3.5mm !important;border-top:0 !important}
+  .part-open{
+    grid-template-columns:16mm minmax(0,1fr);
+    gap:0 4mm;
+    padding:3.2mm 4mm;
+    border:.6pt solid #D8D8D8;
+    border-left:2pt solid #8B1E31;
+    border-radius:3pt;
+    background:#fff !important;
+    box-shadow:none !important;
+    break-inside:avoid;
+    page-break-inside:avoid;
+  }
+  .part--trauma .part-open{border-left-color:#806124}
+  .part--plan .part-open{border-left-color:#0D6B62}
+  .part-open::before{display:none}
+  .part-mark{min-height:0;padding-right:3mm;border-right:.5pt solid #DDD;gap:1.2mm}
+  .part-letter{font-size:24pt;color:#555}
+  .part-index{font-size:6.6pt;color:#888}
+  .part-open h2{font-size:13.5pt;line-height:1.25;color:#000}
+  .part-open .sub{font-size:7.8pt;margin-top:1mm;color:#555}
+  .part-nav{display:none !important}
+  .part > .subsec{margin:3mm 0 0;padding:2.6mm 0 0;border-top:.5pt solid #DCDCDC;scroll-margin-top:0}
+  .sub-title{font-size:11.2pt;line-height:1.3;color:#111}
+  .part .subsec .sec-head{margin-bottom:1.8mm}
+  .part .subsec .sec-num{padding-top:1mm}
   section:first-of-type{border-top:0 !important}
   .sec-head{grid-template-columns:auto 1fr;gap:0 4mm;margin-bottom:2.8mm}
   .sec-num{grid-row:1/3;color:#888;font-size:7.6pt;padding-top:1.7mm;margin:0}
@@ -1260,7 +1672,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
     background:#fff;
   }
   .tbl{display:table;width:100%;font-size:8.5pt;min-width:0;table-layout:auto}
-  #overview .tbl,#zones .tbl,#contact .tbl,#appendix .tbl,#schedule .tbl{display:table;table-layout:auto}
+  #overview .tbl,#zones .tbl,#contact .tbl,#plan .tbl,#schedule .tbl{display:table;table-layout:auto}
   #overview .tbl thead,#schedule .tbl thead{display:table-header-group}
   #overview .tbl tbody,#schedule .tbl tbody{display:table-row-group}
   #overview .tbl tr,#schedule .tbl tr{display:table-row}
@@ -1287,6 +1699,31 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   .appendix .tbl{font-size:7.9pt}
   .appendix .tbl td{padding:1.4mm 2.1mm}
   .appendix .tbl th{padding:1.4mm 2.1mm}
+  .compare-table{min-width:0;table-layout:fixed;font-size:7.8pt}
+  .compare-table .compare-key{width:16%}
+  .compare-table th:nth-child(2),.compare-table th:nth-child(3){width:42%}
+  .compare-table .th-tag{border-color:#CCC;background:#fff;color:#666;font-size:6.4pt;padding:0 1.4mm;margin-bottom:.8mm}
+  .compare-table .th-course{font-size:7.4pt;color:#222}
+  .compare-table td{font-size:7.7pt;line-height:1.4}
+  .compare-table .cell-note{font-size:6.9pt;color:#555;margin-top:.6mm}
+  .overview-notes{grid-template-columns:repeat(2,1fr);gap:2mm;margin-top:2mm}
+  .overview-notes > div{padding:1.8mm 2.2mm;box-shadow:none;break-inside:avoid}
+  .note-key{font-size:6.2pt;color:#777}
+  .overview-notes p{font-size:7.4pt;line-height:1.4}
+  .assess-detail{margin-top:3.5mm;padding-top:2.6mm}
+  .assess-head h3{font-size:10pt;margin:0 0 1mm}
+  .assess-head .sub{font-size:7.6pt;margin-bottom:2mm}
+  .assess-detail .callout{margin-top:2mm}
+  .score-grid{grid-template-columns:repeat(4,1fr);gap:2mm}
+  .score-card{min-height:0;padding:2.4mm 2.6mm;gap:1.5mm;break-inside:avoid}
+  .score-card::before{display:none}
+  .score-pct{font-size:16pt;color:#7A1826}
+  .score-card h3{font-size:7.8pt;line-height:1.35}
+  .grade-block{margin-top:2.2mm;padding:2.2mm 2.4mm 2.4mm;box-shadow:none;break-inside:avoid}
+  .scale-label{font-size:6.3pt;margin-bottom:1.2mm}
+  .grade{padding:1.3mm 1mm}
+  .grade-band{font-size:6.5pt}
+  .grade-letter{font-size:10.5pt}
 
   .callout{
     break-inside:avoid;
@@ -1396,6 +1833,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   .appendix h2{font-size:12pt;color:#333}
   .appendix h3{font-size:9pt;margin:3mm 0 1mm}
   .appendix::before{opacity:.35}
+  #plan{break-before:page;page-break-before:always;border-top:0 !important;padding-top:0 !important}
+  #plan .part-open{break-before:auto;page-break-before:auto}
+  #plan .tbl{font-size:7.9pt}
+  #plan .tbl td{padding:1.4mm 2.1mm}
+  #plan .tbl th{padding:1.4mm 2.1mm}
   .daylist{margin-top:2.5mm;border-left:.5pt solid #CCC}
   .day{
     grid-template-columns:26mm 1fr;
@@ -1430,6 +1872,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   <div class="wrap hero-inner">
     <p class="kicker">Year 5 · Block 2 · 3000539 Emergency Medicine I</p>
     <h1><span class="h1-latin">ER &amp; Trauma ·</span> <span class="h1-thai">คู่มือปฏิบัติงาน</span></h1>
+    <div class="course-strip" aria-label="รายวิชาในบล็อค">
+      <span class="course-chip"><span class="course-code">3000539</span> Emergency Medicine</span>
+      <span class="course-chip"><span class="course-code">3000537</span> Traumatology</span>
+    </div>
     <p class="lede">กฎเวร การประเมินผล วอร์ด G-trauma กฎในห้องฉุกเฉิน โซนการทำงาน และหัวข้อที่ใช้สอบ</p>
 
     <div class="stats" aria-hidden="true">
@@ -1449,16 +1895,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
 
 <nav id="nav" aria-label="สารบัญ"><div class="nav-progress" id="navProgress"></div><div class="nav-inner">
   <a href="#overview">ภาพรวม</a>
-  <a href="#score">การประเมินผล</a>
-  <a href="#shift">เวร</a>
-  <a href="#ward">วอร์ด</a>
-  <a href="#schedule">ตารางสอน G-Trauma (3000537)</a>
-  <a href="#rules">กฎใน ER</a>
-  <a href="#zones">โซน</a>
-  <a href="#topics">หัวข้อสอบ</a>
+  <a href="#er">ER</a>
+  <a href="#trauma">Trauma</a>
+  <a href="#plan">แผน</a>
   <a href="#contact">ติดต่อ</a>
-  <a href="#check">Checklist</a>
-  <a href="#appendix">ภาคผนวก</a>
 </div></nav>
 
 <main class="wrap">
@@ -1466,56 +1906,104 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
 <section id="overview">
   <div class="sec-head">
     <span class="sec-num" aria-hidden="true">01</span>
-    <h2 id="overview-title">ภาพรวมรายวิชา</h2>
+    <h2 id="overview-title">ภาพรวมบล็อค 2 วิชา</h2>
+    <p class="sub">3000539 Emergency Medicine · 3000537 Traumatology · 2–29 พ.ย. 2569</p>
   </div>
-  <div class="tbl-wrap tbl-tall" tabindex="0" role="region" aria-labelledby="overview-title">
-  <table class="tbl">
-    <thead><tr><th class="c-key" scope="col">รายการ</th><th scope="col">รายละเอียด</th></tr></thead>
+
+  <div class="tbl-wrap compare-wrap" tabindex="0" role="region" aria-labelledby="overview-title">
+  <table class="tbl compare-table">
+    <colgroup><col class="compare-key"><col><col></colgroup>
+    <thead>
+      <tr>
+        <th scope="col">รายการ</th>
+        <th scope="col"><span class="th-tag">EM</span><span class="th-course">3000539 Emergency Medicine</span></th>
+        <th scope="col"><span class="th-tag">Trauma</span><span class="th-course">3000537 Traumatology</span></th>
+      </tr>
+    </thead>
     <tbody>
-    <tr><td>รหัส / ชื่อ</td><td>3000539 EM 1 เวชศาสตร์ฉุกเฉิน 1 · 2 (1-2-3) หน่วยกิต · Year Course</td></tr>
-    <tr><td>สถานที่</td><td>หอผู้ป่วยฉุกเฉิน อาคารภูมิสิริมังคลานุสรณ์ (ภส.1A) และวอร์ด G-trauma 16A1</td></tr>
-    <tr><td>ระยะเวลา</td><td>4 สัปดาห์ · 2–29 พ.ย. 2569</td></tr>
-    <tr><td>รูปแบบ</td><td>workplace-based learning ภายใต้การกำกับของแพทย์ประจำบ้านและอาจารย์</td></tr>
-    <tr><td>ชั่วโมงเรียน</td><td>บรรยายออนไลน์ 13 · workshop/discussion 4 · bedside 15 · ปฏิบัติงานคลินิก 49 · SDL 8</td></tr>
-    <tr><td>รายวิชาที่เรียนร่วม</td><td>3000545 เวชศาสตร์ผู้ป่วยนอกฯ · 3000505 Chronic &amp; Palliative Care · 3000537 วิทยาการบาดเจ็บ</td></tr>
+    <tr>
+      <td>รหัส</td>
+      <td>3000539 EM 1 เวชศาสตร์ฉุกเฉิน 1</td>
+      <td>3000537 วิทยาการบาดเจ็บ (Traumatology)</td>
+    </tr>
+    <tr>
+      <td>หน่วยกิต / ชั่วโมง</td>
+      <td>2 (1-2-3) หน่วยกิต · Year Course<span class="cell-note">บรรยายออนไลน์ 13 · workshop/discussion 4 · bedside 15 · ปฏิบัติงานคลินิก 49 · SDL 8</span></td>
+      <td>ไม่ระบุบนหน้านี้ · เรียนร่วมบล็อค 4 สัปดาห์</td>
+    </tr>
+    <tr>
+      <td>สถานที่หลัก</td>
+      <td>หอผู้ป่วยฉุกเฉิน อาคารภูมิสิริมังคลานุสรณ์ (ภส.1A)</td>
+      <td>วอร์ด G-trauma 16A1</td>
+    </tr>
+    <tr>
+      <td>การประเมิน</td>
+      <td>ความรู้ 40 · สถานการณ์จำลอง 30 · พฤติกรรม 30 · Assignment IPC (S/U)<span class="cell-note">ต้องผ่าน MPL ทุกส่วน</span></td>
+      <td>สอบข้อเขียน 40% · ใบประเมินนิสิต 20% · Case report 20% · ใบ Chula MOOC 20%<span class="cell-note">เกรด ≥90 A · 80–89 B+ · 70–79 B · 60–69 C+ · ต่ำกว่า 60 ตก</span></td>
+    </tr>
+    <tr>
+      <td>วันเรียน</td>
+      <td>4 สัปดาห์ · 2–29 พ.ย. 2569<span class="cell-note">เวรตามตาราง · สแกนนิ้วเข้าและออกทุกเวร</span></td>
+      <td>อังคาร พุธ ศุกร์ · วอร์ด 08.00–16.00<span class="cell-note">Grand round อังคาร 09.00</span></td>
+    </tr>
+    <tr>
+      <td>งานส่ง</td>
+      <td>IPC for patient safety · S/U · 19 พ.ย. 08.30–12.00</td>
+      <td>Case report · ใบปะหน้า · ใบ certificate Chula MOOC trauma (course 13219)<span class="cell-note">ศุกร์ 27 พ.ย. ก่อน 12.00 · ห้อง 1301 ชั้น 13 อาคารรัตนวิทยพัฒน์</span></td>
+    </tr>
     </tbody>
   </table>
   </div>
-</section>
 
-<section id="score">
-  <div class="sec-head">
-    <span class="sec-num" aria-hidden="true">02</span>
-    <h2>การประเมินผล</h2>
-    <p class="sub">เกณฑ์ไม่ชดเชยกัน ต้องผ่าน MPL ทุกส่วน</p>
+  <div class="overview-notes">
+    <div><span class="note-key">รูปแบบ</span><p>workplace-based learning ภายใต้การกำกับของแพทย์ประจำบ้านและอาจารย์</p></div>
+    <div><span class="note-key">รายวิชาที่เรียนร่วม</span><p>3000545 เวชศาสตร์ผู้ป่วยนอกฯ · 3000505 Chronic &amp; Palliative Care · 3000537 วิทยาการบาดเจ็บ</p></div>
   </div>
-  <div class="grid">
-    <div class="card"><h3>ความรู้ 40 คะแนน</h3><p>MCQ 30 ข้อ = 30 · SAQ 5 ข้อ = 10<br><span class="chip">modified Ebel</span></p></div>
-    <div class="card"><h3>สถานการณ์จำลอง 30 คะแนน</h3><p>OSCE 2 สถานี = 20 · Case discussion (bedside) = 10<br><span class="chip">modified Angoff</span></p></div>
-    <div class="card"><h3>พฤติกรรม 30 คะแนน</h3><p>Longitudinal observation by residents 15 · On-duty attendance 15<br><span class="chip">Angoff หรือ 60%</span></p></div>
-    <div class="card"><h3>Assignment</h3><p>IPC for patient safety · S/U · 19 พ.ย. 08.30–12.00</p></div>
-  </div>
-  <div class="ipc-panel">
-    <p class="ipc-when">IPC for patient safety · 19 พ.ย. 08.30–12.00</p>
-    <p class="ipc-place">ห้องปฏิบัติการ ชั้น 6 สถาบันการพยาบาลศรีสวรินทิรา สภากาชาดไทย</p>
-    <p class="ipc-code">รหัสลงทะเบียนคอร์ส MOOC: MDCU77 · คอร์ส MyCourseVille 37268 (movie + MOOC + แบบประเมิน → certificate) · วิธีเล่นเกม ER-VIPE: youtu.be/VOeRxbPvwCI</p>
-    <p class="ipc-run">08.30–08.35 orientation/แบ่งกลุ่ม · 08.35–09.15 ice breaking · 09.15–09.30 non-technical skill · 09.30–09.45 สอนเกม ER crowding · 09.45–10.45 เล่น 3 รอบ รอบละ 10 นาที + debrief · 10.45–11.30 debrief รวม · 11.30–12.00 summary</p>
-  </div>
-  <div class="callout amber">
-    <strong>เงื่อนไขการได้ F:</strong> คะแนนส่วนใดส่วนหนึ่งต่ำกว่า MPL · แก้ตัวได้ 1 ครั้งต่อการประเมิน (MCQ, SAQ, OSCE) ถ้าแก้แล้วยังไม่ผ่านถือเป็น F<br>
-    <strong>เวลาเรียน:</strong> ขาดเกิน 20% ไม่มีสิทธิ์เข้าสอบ · มาสายหรือปฏิบัติงานไม่ครบเวลามากกว่า 1 ครั้ง อาจได้ U ในหัวข้อ professionalism<br>
-    <strong>ความซื่อสัตย์:</strong> ลงชื่อแทน ลอกรายงาน ให้ผู้อื่นอยู่เวรแทน หรือบันทึกข้อมูลไม่ตรงความจริง ได้ 0 ในส่วนนั้นและถูกพิจารณาตัดคะแนน
+
+  <div class="assess-detail" id="score">
+    <div class="assess-head">
+      <h3>รายละเอียดการประเมิน 3000539</h3>
+      <p class="sub">เกณฑ์ไม่ชดเชยกัน ต้องผ่าน MPL ทุกส่วน</p>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>ความรู้ 40 คะแนน</h3><p>MCQ 30 ข้อ = 30 · SAQ 5 ข้อ = 10<br><span class="chip">modified Ebel</span></p></div>
+      <div class="card"><h3>สถานการณ์จำลอง 30 คะแนน</h3><p>OSCE 2 สถานี = 20 · Case discussion (bedside) = 10<br><span class="chip">modified Angoff</span></p></div>
+      <div class="card"><h3>พฤติกรรม 30 คะแนน</h3><p>Longitudinal observation by residents 15 · On-duty attendance 15<br><span class="chip">Angoff หรือ 60%</span></p></div>
+    </div>
+    <div class="callout amber">
+      <strong>เงื่อนไขการได้ F:</strong> คะแนนส่วนใดส่วนหนึ่งต่ำกว่า MPL · แก้ตัวได้ 1 ครั้งต่อการประเมิน (MCQ, SAQ, OSCE) ถ้าแก้แล้วยังไม่ผ่านถือเป็น F<br>
+      <strong>เวลาเรียน:</strong> ขาดเกิน 20% ไม่มีสิทธิ์เข้าสอบ · มาสายหรือปฏิบัติงานไม่ครบเวลามากกว่า 1 ครั้ง อาจได้ U ในหัวข้อ professionalism<br>
+      <strong>ความซื่อสัตย์:</strong> ลงชื่อแทน ลอกรายงาน ให้ผู้อื่นอยู่เวรแทน หรือบันทึกข้อมูลไม่ตรงความจริง ได้ 0 ในส่วนนั้นและถูกพิจารณาตัดคะแนน
+    </div>
   </div>
 </section>
 
-<section id="shift">
+<section id="er" class="part part--er">
+<header class="part-open">
+  <div class="part-mark" aria-hidden="true">
+    <span class="part-letter">ก</span>
+    <span class="part-index">02</span>
+  </div>
+  <div class="part-copy">
+    <h2>ภาค ก · 3000539 Emergency Medicine</h2>
+    <p class="sub">หอผู้ป่วยฉุกเฉิน อาคารภูมิสิริมังคลานุสรณ์ (ภส.1A) · 4 สัปดาห์ · 2–29 พ.ย. 2569</p>
+    <div class="part-nav" role="navigation" aria-label="หัวข้อในภาค ก">
+        <a href="#shift">เวร ER</a>
+        <a href="#rules">กฎในห้องฉุกเฉิน</a>
+        <a href="#zones">โซนการทำงาน</a>
+        <a href="#ipc">IPC</a>
+        <a href="#topics">หัวข้อที่ใช้สอบ</a>
+    </div>
+  </div>
+</header>
+
+<section id="shift" class="subsec">
   <div class="sec-head">
-    <span class="sec-num" aria-hidden="true">03</span>
-    <h2>เวร</h2>
+    <span class="sec-num" aria-hidden="true">02.1</span>
+    <h3 class="sub-title" id="shift-title">เวร ER</h3>
     <p class="sub">สแกนนิ้วเข้าและออกทุกเวร</p>
   </div>
-
-  <p class="tl-key">
+<p class="tl-key">
     <span>วัน</span>
     <span>เวลา</span>
     <span>โซน</span>
@@ -1646,13 +2134,107 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   </div>
 </section>
 
-<section id="ward">
+<section id="rules" class="subsec">
   <div class="sec-head">
-    <span class="sec-num" aria-hidden="true">04</span>
-    <h2>วอร์ด G-trauma 16A1</h2>
+    <span class="sec-num" aria-hidden="true">02.2</span>
+    <h3 class="sub-title" id="rules-title">กฎในห้องฉุกเฉิน</h3>
+  </div>
+<div class="grid">
+    <div class="card"><h3>การแต่งกาย</h3><p>ห้ามรองเท้าแตะและกางเกงยีนส์ · นิสิตหญิงใส่กางเกงขายาวปิดข้อเท้า</p></div>
+    <div class="card"><h3>อุปกรณ์ป้องกัน</h3><p>สวม mask และ face shield ตลอดเวลาที่อยู่ในห้องฉุกเฉิน · ของมีคมทิ้งในภาชนะที่จัดไว้เท่านั้น</p></div>
+    <div class="card"><h3>การถ่ายภาพ</h3><p>ห้ามถ่ายรูปผู้ป่วยหรือสถานที่ภายในห้องฉุกเฉิน</p></div>
+    <div class="card"><h3>การสั่งการรักษา</h3><p>ห้ามสั่งการรักษาโดยไม่มีแพทย์ประจำบ้านหรืออาจารย์กำกับ · หัตถการ invasive ต้องขอ informed consent</p></div>
+    <div class="card"><h3>Blood gas</h3><p>ใช้กับผู้ป่วยใน ER เท่านั้น · ใส่ heparin และอุปกรณ์กัน clot · ห้ามส่ง body fluid อื่นหรือเลือดจากวอร์ดอื่น · สแกน barcode ห้าม key HN เอง</p></div>
+    <div class="card"><h3>การพักอาหาร</h3><p>ไม่เกิน 1 ชั่วโมงต่อเวร · แบ่งกันไป ไม่ปล่อยให้ว่างทั้งทีม</p></div>
+  </div>
+  <div class="callout amber">
+    <strong>Bedside teaching:</strong> จันทร์และพฤหัสช่วงเช้า และช่วงบ่ายของวันทำการตามที่นัดกับอาจารย์ · นิสิตโซน non-trauma เตรียมและนำเสนอ 2–3 เคส · ต้องขออนุญาตผู้ป่วยก่อนพาอาจารย์ไปราวน์<br>
+    <strong>ข้อกำหนด:</strong> ต้องนำเสนอเคสกับอาจารย์เวชศาสตร์ฉุกเฉินอย่างน้อย 1 เคสภายใน 4 สัปดาห์ โดยใช้แบบประเมินของฝ่ายฯ · ไม่นำเสนอถือว่าตก
+  </div>
+</section>
+
+<section id="zones" class="subsec">
+  <div class="sec-head">
+    <span class="sec-num" aria-hidden="true">02.3</span>
+    <h3 class="sub-title" id="zones-title">โซนการทำงาน</h3>
+  </div>
+<div class="tbl-wrap" tabindex="0" role="region" aria-labelledby="zones-title">
+  <table class="tbl">
+    <colgroup><col class="col-zone"><col class="col-place"><col class="col-content"></colgroup>
+    <thead><tr><th scope="col">โซน</th><th scope="col">ที่ตั้ง</th><th scope="col">เนื้อหาที่ได้ฝึก</th></tr></thead>
+    <tbody>
+    <tr><td>Non-trauma + Resuscitation bay</td><td>ด้านหน้า</td><td>primary survey, การซักประวัติและตรวจร่างกาย, การวินิจฉัยแยกโรค, การสั่ง Lab และ imaging, ACLS, หัตถการ (paracentesis, ABG, NG lavage, ultrasound, RSI), เวชระเบียน</td></tr>
+    <tr><td>Trauma</td><td>ด้านหน้า</td><td>ATLS, เย็บแผลและใส่เฝือก, procedural sedation, การอ่าน X-ray และ CT, FAST</td></tr>
+    <tr><td>ER-OU (observation unit, ต่ำกว่า 72 ชั่วโมง)</td><td>ชั้น M อาคารภูมิสิริ</td><td>การติดตามอาการ การประเมินซ้ำ และการวางแผนรักษาต่อ</td></tr>
+    <tr><td>Triage</td><td>ด้านหน้าสุด</td><td>ระบบคัดกรองและลำดับความเร่งด่วน</td></tr>
+    <tr><td>EMS</td><td>ด้านหน้าและชั้น M</td><td>การประสานงานกับหน่วยกู้ชีพเอราวัณและนเรศวร</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="ipc" class="subsec">
+  <div class="sec-head">
+    <span class="sec-num" aria-hidden="true">02.4</span>
+    <h3 class="sub-title" id="ipc-title">IPC for patient safety (S/U)</h3>
+  </div>
+<div class="ipc-panel">
+    <p class="ipc-when">IPC for patient safety · 19 พ.ย. 08.30–12.00</p>
+    <p class="ipc-place">ห้องปฏิบัติการ ชั้น 6 สถาบันการพยาบาลศรีสวรินทิรา สภากาชาดไทย</p>
+    <p class="ipc-code">รหัสลงทะเบียนคอร์ส MOOC: MDCU77 · คอร์ส MyCourseVille 37268 (movie + MOOC + แบบประเมิน → certificate) · วิธีเล่นเกม ER-VIPE: youtu.be/VOeRxbPvwCI</p>
+    <p class="ipc-run">08.30–08.35 orientation/แบ่งกลุ่ม · 08.35–09.15 ice breaking · 09.15–09.30 non-technical skill · 09.30–09.45 สอนเกม ER crowding · 09.45–10.45 เล่น 3 รอบ รอบละ 10 นาที + debrief · 10.45–11.30 debrief รวม · 11.30–12.00 summary</p>
+  </div>
+</section>
+
+<section id="topics" class="subsec">
+  <div class="sec-head">
+    <span class="sec-num" aria-hidden="true">02.5</span>
+    <h3 class="sub-title" id="topics-title">หัวข้อที่ใช้สอบ</h3>
+    <p class="sub">ตามที่ระบุในเอกสารปฐมนิเทศของรายวิชา</p>
+  </div>
+<div class="grid">
+    <div class="card">
+      <h3>e-lecture (10 หัวข้อ)</h3>
+      <p>
+        <span class="chip">Principle of Emergency Medicine</span><span class="chip">Basic &amp; advanced cardiac life support</span><span class="chip">Approach to chest pain</span><span class="chip">Emergency airway management</span><span class="chip">Emergency Medicine Service</span><span class="chip">Emergency toxicology</span><span class="chip">Approach to dyspnea</span><span class="chip">Initial management of shock</span><span class="chip">Environmental emergency</span><span class="chip">Hypertensive emergency</span>
+      </p>
+    </div>
+    <div class="card">
+      <h3>SDL (9 หัวข้อ)</h3>
+      <p>
+        <span class="chip">Syncope</span><span class="chip">Hyperglycemic crisis และ hypoglycemia</span><span class="chip">Acute abdomen</span><span class="chip">SVC obstruction, hemolytic crisis, incompatible transfusion</span><span class="chip">Sepsis</span><span class="chip">Anuria/oliguria, urinary retention, hyperkalemia</span><span class="chip">Coma, convulsion, increased ICP</span><span class="chip">Pneumothorax</span><span class="chip">Bleeding in pregnancy, eclampsia</span>
+      </p>
+    </div>
+  </div>
+  <div class="callout teal"><strong>สื่อประกอบ:</strong> คอร์ส 3000537.C มีวิดีโอบรรยาย 5 เรื่อง (pediatric trauma, traumatic brain injury, traumatic spine injury, scrub movie, suture &amp; knot) · คอร์ส 3000539 ยังไม่มีไฟล์บรรยายใน Media gallery มีเฉพาะวิดีโอ ACS และ chest pain ของอาจารย์ขวัญศิริใน Course Materials</div>
+</section>
+</section>
+
+<section id="trauma" class="part part--trauma">
+<header class="part-open">
+  <div class="part-mark" aria-hidden="true">
+    <span class="part-letter">ข</span>
+    <span class="part-index">03</span>
+  </div>
+  <div class="part-copy">
+    <h2>ภาค ข · 3000537 Traumatology</h2>
+    <p class="sub">วอร์ด G-trauma 16A1 · อังคาร พุธ ศุกร์ 08.00–16.00</p>
+    <div class="part-nav" role="navigation" aria-label="หัวข้อในภาค ข">
+        <a href="#ward">วอร์ด G-trauma 16A1</a>
+        <a href="#schedule">ตารางสอน</a>
+        <a href="#trauma-score">การประเมิน</a>
+        <a href="#deliverables">งานส่ง</a>
+    </div>
+  </div>
+</header>
+
+<section id="ward" class="subsec">
+  <div class="sec-head">
+    <span class="sec-num" aria-hidden="true">03.1</span>
+    <h3 class="sub-title" id="ward-title">วอร์ด G-trauma 16A1</h3>
     <p class="sub">อังคาร พุธ ศุกร์ 08.00–16.00 · ทั้งกลุ่ม 22 คนต้องอยู่เมื่ออาจารย์มาตรวจ</p>
   </div>
-  <div class="grid">
+<div class="grid">
     <div class="card"><h3>ราวน์เช้าของกลุ่ม 7–11</h3><p>06.45–08.00<br><span class="chip red">พ. 4 พ.ย.</span><span class="chip red">ศ. 13 พ.ย.</span><span class="chip red">อ. 24 พ.ย.</span></p></div>
     <div class="card"><h3>การรับเคส</h3><p>นิสิตปี 5 รับและเล่าเคสคนละ 1 เคส เลือกเคสใดก็ได้ · พี่แพรเริ่มราวน์ประมาณ 07.00–07.15</p></div>
     <div class="card"><h3>ลำดับการเล่าเคส</h3><p>CC → Dx → การผ่าตัดหรือหัตถการ → การรักษาปัจจุบัน → สิ่งที่รออยู่<br>ไม่ต้องเล่าเป็น SOAP</p></div>
@@ -1660,12 +2242,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   </div>
 </section>
 
-<section id="schedule">
+<section id="schedule" class="subsec">
   <div class="sec-head">
-    <span class="sec-num" aria-hidden="true">05</span>
-    <h2 id="schedule-title">ตารางสอน <span class="course-name">G-Trauma</span> (3000537)</h2>
+    <span class="sec-num" aria-hidden="true">03.2</span>
+    <h3 class="sub-title" id="schedule-title">ตารางสอน อ./พ./ศ. · G-Trauma (3000537)</h3>
   </div>
-  <div class="tbl-wrap" tabindex="0" role="region" aria-labelledby="schedule-title">
+<div class="tbl-wrap" tabindex="0" role="region" aria-labelledby="schedule-title">
   <table class="tbl">
     <colgroup><col class="col-time"><col class="col-act"><col class="col-place"></colgroup>
     <thead><tr><th scope="col">เวลา</th><th scope="col">กิจกรรม</th><th scope="col">สถานที่ / อาจารย์</th></tr></thead>
@@ -1684,107 +2266,63 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   <p class="schedule-note">ส่วนใหญ่เป็น lecture ไม่ต้องเตรียมเคส ยกเว้น อ.สุกัญญา ที่มีพรีเซ้นเคสสัปดาห์สุดท้าย · เวลาอาจเปลี่ยนวันต่อวัน รอพี่ธุรการแจ้ง</p>
 </section>
 
-<section id="rules">
+<section id="trauma-score" class="subsec">
   <div class="sec-head">
-    <span class="sec-num" aria-hidden="true">06</span>
-    <h2>กฎในห้องฉุกเฉิน</h2>
+    <span class="sec-num" aria-hidden="true">03.3</span>
+    <h3 class="sub-title" id="trauma-score-title">การประเมิน 3000537</h3>
   </div>
-  <div class="grid">
-    <div class="card"><h3>การแต่งกาย</h3><p>ห้ามรองเท้าแตะและกางเกงยีนส์ · นิสิตหญิงใส่กางเกงขายาวปิดข้อเท้า</p></div>
-    <div class="card"><h3>อุปกรณ์ป้องกัน</h3><p>สวม mask และ face shield ตลอดเวลาที่อยู่ในห้องฉุกเฉิน · ของมีคมทิ้งในภาชนะที่จัดไว้เท่านั้น</p></div>
-    <div class="card"><h3>การถ่ายภาพ</h3><p>ห้ามถ่ายรูปผู้ป่วยหรือสถานที่ภายในห้องฉุกเฉิน</p></div>
-    <div class="card"><h3>การสั่งการรักษา</h3><p>ห้ามสั่งการรักษาโดยไม่มีแพทย์ประจำบ้านหรืออาจารย์กำกับ · หัตถการ invasive ต้องขอ informed consent</p></div>
-    <div class="card"><h3>Blood gas</h3><p>ใช้กับผู้ป่วยใน ER เท่านั้น · ใส่ heparin และอุปกรณ์กัน clot · ห้ามส่ง body fluid อื่นหรือเลือดจากวอร์ดอื่น · สแกน barcode ห้าม key HN เอง</p></div>
-    <div class="card"><h3>การพักอาหาร</h3><p>ไม่เกิน 1 ชั่วโมงต่อเวร · แบ่งกันไป ไม่ปล่อยให้ว่างทั้งทีม</p></div>
+<div class="score-grid grid">
+    <div class="card score-card"><span class="score-pct">40%</span><h3>สอบข้อเขียน</h3></div>
+    <div class="card score-card"><span class="score-pct">20%</span><h3>ใบประเมินนิสิต</h3></div>
+    <div class="card score-card"><span class="score-pct">20%</span><h3>Case report</h3></div>
+    <div class="card score-card"><span class="score-pct">20%</span><h3>ใบ Chula MOOC</h3></div>
   </div>
-  <div class="callout amber">
-    <strong>Bedside teaching:</strong> จันทร์และพฤหัสช่วงเช้า และช่วงบ่ายของวันทำการตามที่นัดกับอาจารย์ · นิสิตโซน non-trauma เตรียมและนำเสนอ 2–3 เคส · ต้องขออนุญาตผู้ป่วยก่อนพาอาจารย์ไปราวน์<br>
-    <strong>ข้อกำหนด:</strong> ต้องนำเสนอเคสกับอาจารย์เวชศาสตร์ฉุกเฉินอย่างน้อย 1 เคสภายใน 4 สัปดาห์ โดยใช้แบบประเมินของฝ่ายฯ · ไม่นำเสนอถือว่าตก
-  </div>
-</section>
-
-<section id="zones">
-  <div class="sec-head">
-    <span class="sec-num" aria-hidden="true">07</span>
-    <h2 id="zones-title">โซนการทำงาน</h2>
-  </div>
-  <div class="tbl-wrap" tabindex="0" role="region" aria-labelledby="zones-title">
-  <table class="tbl">
-    <colgroup><col class="col-zone"><col class="col-place"><col class="col-content"></colgroup>
-    <thead><tr><th scope="col">โซน</th><th scope="col">ที่ตั้ง</th><th scope="col">เนื้อหาที่ได้ฝึก</th></tr></thead>
-    <tbody>
-    <tr><td>Non-trauma + Resuscitation bay</td><td>ด้านหน้า</td><td>primary survey, การซักประวัติและตรวจร่างกาย, การวินิจฉัยแยกโรค, การสั่ง Lab และ imaging, ACLS, หัตถการ (paracentesis, ABG, NG lavage, ultrasound, RSI), เวชระเบียน</td></tr>
-    <tr><td>Trauma</td><td>ด้านหน้า</td><td>ATLS, เย็บแผลและใส่เฝือก, procedural sedation, การอ่าน X-ray และ CT, FAST</td></tr>
-    <tr><td>ER-OU (observation unit, ต่ำกว่า 72 ชั่วโมง)</td><td>ชั้น M อาคารภูมิสิริ</td><td>การติดตามอาการ การประเมินซ้ำ และการวางแผนรักษาต่อ</td></tr>
-    <tr><td>Triage</td><td>ด้านหน้าสุด</td><td>ระบบคัดกรองและลำดับความเร่งด่วน</td></tr>
-    <tr><td>EMS</td><td>ด้านหน้าและชั้น M</td><td>การประสานงานกับหน่วยกู้ชีพเอราวัณและนเรศวร</td></tr>
-    </tbody>
-  </table>
-  </div>
-</section>
-
-<section id="topics">
-  <div class="sec-head">
-    <span class="sec-num" aria-hidden="true">08</span>
-    <h2>หัวข้อที่ใช้สอบ</h2>
-    <p class="sub">ตามที่ระบุในเอกสารปฐมนิเทศของรายวิชา</p>
-  </div>
-  <div class="grid">
-    <div class="card">
-      <h3>e-lecture (10 หัวข้อ)</h3>
-      <p>
-        <span class="chip">Principle of Emergency Medicine</span><span class="chip">Basic &amp; advanced cardiac life support</span><span class="chip">Approach to chest pain</span><span class="chip">Emergency airway management</span><span class="chip">Emergency Medicine Service</span><span class="chip">Emergency toxicology</span><span class="chip">Approach to dyspnea</span><span class="chip">Initial management of shock</span><span class="chip">Environmental emergency</span><span class="chip">Hypertensive emergency</span>
-      </p>
-    </div>
-    <div class="card">
-      <h3>SDL (9 หัวข้อ)</h3>
-      <p>
-        <span class="chip">Syncope</span><span class="chip">Hyperglycemic crisis และ hypoglycemia</span><span class="chip">Acute abdomen</span><span class="chip">SVC obstruction, hemolytic crisis, incompatible transfusion</span><span class="chip">Sepsis</span><span class="chip">Anuria/oliguria, urinary retention, hyperkalemia</span><span class="chip">Coma, convulsion, increased ICP</span><span class="chip">Pneumothorax</span><span class="chip">Bleeding in pregnancy, eclampsia</span>
-      </p>
+  <div class="grade-block">
+    <p class="scale-label">เกรด</p>
+    <div class="grade-scale" role="list" aria-label="เกณฑ์เกรด 3000537">
+      <div class="grade" role="listitem"><span class="grade-band">≥90</span><span class="grade-letter">A</span></div>
+      <div class="grade" role="listitem"><span class="grade-band">80–89</span><span class="grade-letter">B+</span></div>
+      <div class="grade" role="listitem"><span class="grade-band">70–79</span><span class="grade-letter">B</span></div>
+      <div class="grade" role="listitem"><span class="grade-band">60–69</span><span class="grade-letter">C+</span></div>
+      <div class="grade" role="listitem"><span class="grade-band">ต่ำกว่า 60</span><span class="grade-letter">ตก</span></div>
     </div>
   </div>
-  <div class="callout teal"><strong>สื่อประกอบ:</strong> คอร์ส 3000537.C มีวิดีโอบรรยาย 5 เรื่อง (pediatric trauma, traumatic brain injury, traumatic spine injury, scrub movie, suture &amp; knot) · คอร์ส 3000539 ยังไม่มีไฟล์บรรยายใน Media gallery มีเฉพาะวิดีโอ ACS และ chest pain ของอาจารย์ขวัญศิริใน Course Materials</div>
 </section>
 
-<section id="contact">
+<section id="deliverables" class="subsec">
   <div class="sec-head">
-    <span class="sec-num" aria-hidden="true">09</span>
-    <h2 id="contact-title">ติดต่อ</h2>
+    <span class="sec-num" aria-hidden="true">03.4</span>
+    <h3 class="sub-title" id="deliverables-title">งานส่งท้ายบล็อค</h3>
   </div>
-  <div class="tbl-wrap" tabindex="0" role="region" aria-labelledby="contact-title">
-  <table class="tbl">
-    <thead><tr><th scope="col">เรื่อง</th><th scope="col">ผู้รับผิดชอบ</th><th scope="col">ช่องทาง</th></tr></thead>
-    <tbody>
-    <tr><td>ธุรการรายวิชา</td><td>คุณสโรชา (พี่เบียร์)</td><td>02-649-4000 ต่อ 83058 · 063-797-1033</td></tr>
-    <tr><td>ประสานงานรายวิชา</td><td>อ.นรวิชญ์ กิจไพศาลรัตนา</td><td>083-0922999 · norawit.k@chula.ac.th</td></tr>
-    <tr><td>ขาดเวรและเหตุฉุกเฉิน</td><td>คุณสุรชัย เพียรเพชรเลิศ</td><td>081-5526254 · LINE surachaikun</td></tr>
-    </tbody>
-  </table>
+<div class="closing">
+    <p>ศุกร์ 27 พ.ย. ก่อน 12.00 · ห้อง 1301 ชั้น 13 อาคารรัตนวิทยพัฒน์ · แม็กเรียง: 1) ใบปะหน้า (คะแนนประเมิน) 2) Case report (เขียนนอก DocQ ได้ · ภาษาไทย · ฟอนต์ไม่เล็กเกินไป) 3) ใบ certificate Chula MOOC trauma (course 13219)</p>
+    <p>Cadaver workshop (rot C): 22 ธ.ค. 69 10.00–12.00 · เรียนรวม · สถานที่รอประกาศ</p>
   </div>
 </section>
-
-<section id="check">
-  <div class="sec-head">
-    <span class="sec-num" aria-hidden="true">10</span>
-    <h2>Checklist</h2>
-  </div>
-  <div class="checklist">
-  <label class="check"><input type="checkbox" data-k="c1"> เตรียมเคสนำเสนอให้พี่แพร (4, 13, 24 พ.ย.)</label>
-  <label class="check"><input type="checkbox" data-k="c2"> ยืนยันใบประเมิน: ให้พี่เด้นประเมิน ≥2 ครั้ง/เดือน (เลือกคนไหนก็ได้)</label>
-  <label class="check"><input type="checkbox" data-k="c3"> นำเสนอเคสกับอาจารย์อย่างน้อย 1 ครั้งภายใน 4 สัปดาห์</label>
-  <label class="check"><input type="checkbox" data-k="c4"> เข้าร่วม IPC for patient safety 19 พ.ย. 08.30–12.00</label>
-  <label class="check"><input type="checkbox" data-k="c5"> ตรวจสอบว่ามีวิดีโอบรรยายเพิ่มใน Media gallery หรือยัง</label>
-  <label class="check"><input type="checkbox" data-k="c6"> ตรวจสอบตารางราวน์และเวลา activity ของอาจารย์ประจำวัน</label>
-  </div>
 </section>
 
-<section id="appendix" class="appendix">
-  <div class="sec-head">
-    <span class="sec-num" aria-hidden="true">11</span>
-    <h2 id="appendix-title">ภาคผนวก · ตารางทบทวน (เสริม)</h2>
+<section id="plan" class="part part--plan">
+<header class="part-open">
+  <div class="part-mark" aria-hidden="true">
+    <span class="part-letter">ค</span>
+    <span class="part-index">04</span>
+  </div>
+  <div class="part-copy">
+    <h2>ภาค ค · แผนทบทวน</h2>
     <p class="sub">ไม่ได้เป็นส่วนหนึ่งของการปฏิบัติงาน ใช้เมื่อมีเวลาในเวรหรือช่วงเช้าที่ว่าง</p>
+    <div class="part-nav" role="navigation" aria-label="หัวข้อในภาค ค">
+        <a href="#plan-timetable">ตารางทบทวน</a>
+        <a href="#plan-exam">ก่อนสอบ</a>
+    </div>
   </div>
-  <div class="daylist">
+</header>
+
+<section id="plan-timetable" class="subsec">
+  <div class="sec-head">
+    <span class="sec-num" aria-hidden="true">04.1</span>
+    <h3 class="sub-title" id="plan-timetable-title">ตารางทบทวน (เสริม)</h3>
+  </div>
+<div class="daylist">
     <div class="day"><div class="when">จ. 2 พ.ย.<br>เวร 08–24</div><div class="what"><strong>Principle of Emergency Medicine, EMS</strong><span>ช่วงที่ผู้ป่วยน้อยใน ER</span></div></div>
     <div class="day"><div class="when">พ. 3, พ. 6</div><div class="what"><strong>Primary และ secondary survey</strong><span>วอร์ด G-trauma · ATLS บท 1–2</span></div></div>
     <div class="day off"><div class="when">พฤ. 5, ส. 7</div><div class="what"><strong>วันว่าง</strong><span>ไม่มีการกำหนดการอ่าน</span></div></div>
@@ -1797,9 +2335,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
     <div class="day"><div class="when">พฤ. 26 พ.ย.<br>08.00–11.00</div><div class="what"><strong>ACLS และ airway management</strong><span>ช่วงเช้าที่ว่างก่อน EBM และเวร</span></div></div>
     <div class="day off"><div class="when">ส. 28 – อา. 29</div><div class="what"><strong>วันว่าง</strong><span>สิ้นสุดบล็อก</span></div></div>
   </div>
+</section>
 
-  <h3>ช่วงทบทวนก่อนสอบ 30 พ.ย. – 23 ธ.ค.</h3>
-  <div class="tbl-wrap" tabindex="0" role="region" aria-labelledby="appendix-title">
+<section id="plan-exam" class="subsec">
+  <div class="sec-head">
+    <span class="sec-num" aria-hidden="true">04.2</span>
+    <h3 class="sub-title" id="plan-exam-title">ช่วงทบทวนก่อนสอบ 30 พ.ย. – 23 ธ.ค.</h3>
+  </div>
+<div class="tbl-wrap" tabindex="0" role="region" aria-labelledby="plan-exam-title">
   <table class="tbl">
     <thead><tr><th scope="col">ช่วง</th><th scope="col">เนื้อหา</th><th scope="col">ผลลัพธ์</th></tr></thead>
     <tbody>
@@ -1810,11 +2353,38 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
     </tbody>
   </table>
   </div>
+</section>
+</section>
 
-  <div class="closing">
-    <h3>งานส่งท้ายบล็อค</h3>
-    <p>ศุกร์ 27 พ.ย. ก่อน 12.00 · ห้อง 1301 ชั้น 13 อาคารรัตนวิทยพัฒน์ · แม็กเรียง: 1) ใบปะหน้า (คะแนนประเมิน) 2) Case report (เขียนนอก DocQ ได้ · ภาษาไทย · ฟอนต์ไม่เล็กเกินไป) 3) ใบ certificate Chula MOOC trauma (course 13219)</p>
-    <p>Cadaver workshop (rot C): 22 ธ.ค. 69 10.00–12.00 · เรียนรวม · สถานที่รอประกาศ</p>
+<section id="check">
+  <div class="sec-head">
+    <span class="sec-num" aria-hidden="true">05</span>
+    <h2>Checklist</h2>
+  </div>
+<div class="checklist">
+  <label class="check"><input type="checkbox" data-k="c1"> เตรียมเคสนำเสนอให้พี่แพร (4, 13, 24 พ.ย.)</label>
+  <label class="check"><input type="checkbox" data-k="c2"> ยืนยันใบประเมิน: ให้พี่เด้นประเมิน ≥2 ครั้ง/เดือน (เลือกคนไหนก็ได้)</label>
+  <label class="check"><input type="checkbox" data-k="c3"> นำเสนอเคสกับอาจารย์อย่างน้อย 1 ครั้งภายใน 4 สัปดาห์</label>
+  <label class="check"><input type="checkbox" data-k="c4"> เข้าร่วม IPC for patient safety 19 พ.ย. 08.30–12.00</label>
+  <label class="check"><input type="checkbox" data-k="c5"> ตรวจสอบว่ามีวิดีโอบรรยายเพิ่มใน Media gallery หรือยัง</label>
+  <label class="check"><input type="checkbox" data-k="c6"> ตรวจสอบตารางราวน์และเวลา activity ของอาจารย์ประจำวัน</label>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="sec-head">
+    <span class="sec-num" aria-hidden="true">06</span>
+    <h2 id="contact-title">ติดต่อ</h2>
+  </div>
+<div class="tbl-wrap" tabindex="0" role="region" aria-labelledby="contact-title">
+  <table class="tbl">
+    <thead><tr><th scope="col">เรื่อง</th><th scope="col">ผู้รับผิดชอบ</th><th scope="col">ช่องทาง</th></tr></thead>
+    <tbody>
+    <tr><td>ธุรการรายวิชา</td><td>คุณสโรชา (พี่เบียร์)</td><td>02-649-4000 ต่อ 83058 · 063-797-1033</td></tr>
+    <tr><td>ประสานงานรายวิชา</td><td>อ.นรวิชญ์ กิจไพศาลรัตนา</td><td>083-0922999 · norawit.k@chula.ac.th</td></tr>
+    <tr><td>ขาดเวรและเหตุฉุกเฉิน</td><td>คุณสุรชัย เพียรเพชรเลิศ</td><td>081-5526254 · LINE surachaikun</td></tr>
+    </tbody>
+  </table>
   </div>
 </section>
 
@@ -1838,7 +2408,7 @@ document.querySelectorAll('.check input').forEach(function(b){
 <script>
 /* scroll-spy + reading progress: vanilla, no dependencies */
 (function(){
-  var links=[].slice.call(document.querySelectorAll('nav a'));
+  var links=[].slice.call(document.querySelectorAll('#nav .nav-inner > a'));
   if(!links.length) return;
   var nav=document.getElementById('nav');
   var bar=document.getElementById('navProgress');
@@ -1861,7 +2431,7 @@ document.querySelectorAll('.check input').forEach(function(b){
   }
   function update(){
     ticking=false;
-    var offset=(nav?nav.offsetHeight:56)+28;
+    var offset=(nav?nav.offsetHeight:56)+64;
     var y=window.pageYOffset||document.documentElement.scrollTop;
     var idx=0,i,el;
     for(i=0;i<targets.length;i++){
