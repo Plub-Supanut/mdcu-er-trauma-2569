@@ -163,6 +163,7 @@ a{color:var(--crimson-ink)}
   opacity:.85;
 }
 .h1-latin,.h1-thai{white-space:nowrap}
+.course-name{white-space:nowrap}
 h1{
   font-family:var(--serif);
   font-weight:600;
@@ -538,6 +539,32 @@ h3{
   .callout.teal{border-color:rgba(126,214,200,.24)}
 }
 
+/* ---------- IPC briefing ---------- */
+.ipc-panel{
+  margin:18px 0 0;
+  padding:18px 22px 19px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-left:3px solid var(--teal);
+  border-radius:2px var(--r-md) var(--r-md) 2px;
+  box-shadow:var(--sh-1),inset 0 1px 0 var(--card-highlight);
+  font-size:13.8px;
+  line-height:1.7;
+}
+.ipc-panel p{margin:0}
+.ipc-panel p+p{margin-top:5px}
+.ipc-when{color:var(--ink);font-weight:600}
+.ipc-place{color:var(--muted)}
+.ipc-code{font-size:13px;color:var(--body);overflow-wrap:anywhere}
+.ipc-run{
+  margin-top:10px !important;
+  padding-top:9px;
+  border-top:1px dashed var(--line-2);
+  font-size:12.5px;
+  line-height:1.68;
+  color:var(--muted);
+}
+
 ol,ul{padding-left:1.4em;margin:12px 0}
 li{margin:7px 0}
 
@@ -585,8 +612,15 @@ li{margin:7px 0}
   font-variant-numeric:tabular-nums;
 }
 .tl-body{min-width:0}
-.tl-slots{display:flex;flex-wrap:wrap;gap:8px 24px}
-.slot{display:flex;align-items:center;gap:10px;min-width:0}
+.tl-slots{display:flex;flex-wrap:wrap;gap:12px 28px}
+.slot{
+  display:grid;
+  grid-template-columns:auto auto;
+  justify-content:start;
+  align-items:center;
+  gap:0 10px;
+  min-width:0;
+}
 .slot-time{
   font-size:14.5px;
   font-weight:600;
@@ -595,6 +629,23 @@ li{margin:7px 0}
   letter-spacing:.01em;
   min-width:104px;
 }
+.slot .chip{margin:0}
+.slot-meta{
+  grid-column:1/-1;
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  margin-top:4px;
+  padding-left:114px;
+  font-size:12px;
+  font-weight:400;
+  line-height:1.55;
+  letter-spacing:0;
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+.slot-meta span{display:block;white-space:nowrap}
+.slot-floor{color:var(--faint)}
 .tl-note{margin:8px 0 0;font-size:14px;line-height:1.7;color:var(--muted)}
 .tl-key{
   display:flex;
@@ -741,6 +792,33 @@ section.appendix+section{border-top:0;padding-top:0}
 .day .what strong{display:block;font-size:14.5px;font-weight:600;color:var(--body);line-height:1.55}
 .day .what span{font-size:13px;color:var(--muted);line-height:1.6}
 
+/* ---------- G-Trauma schedule ---------- */
+#schedule .col-time{width:19%}
+#schedule .col-act{width:31%}
+#schedule .col-place{width:50%}
+#schedule .tbl td:first-child{font-size:14px;white-space:nowrap}
+.schedule-note{
+  margin:12px 0 0;
+  max-width:82ch;
+  font-size:13px;
+  line-height:1.7;
+  color:var(--muted);
+}
+
+/* ---------- closing block ---------- */
+.closing{
+  margin:24px 0 0;
+  padding:18px 20px 19px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-left:3px solid var(--gold);
+  border-radius:2px var(--r-md) var(--r-md) 2px;
+  box-shadow:var(--sh-1);
+}
+.closing h3{margin:0 0 9px;font-size:16px;color:var(--ink)}
+.closing p{margin:0;font-size:13.8px;line-height:1.72;color:var(--body)}
+.closing p+p{margin-top:7px;color:var(--muted)}
+
 /* ---------- footer ---------- */
 footer{
   border-top:1px solid var(--line);
@@ -847,8 +925,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   .tl-item{grid-template-columns:1fr;gap:10px;padding:18px 0 18px 24px}
   .tl-date{font-size:15px}
   .slot-time{min-width:0}
-  .tl-slots{flex-direction:column;gap:8px}
+  .tl-slots{flex-direction:column;gap:12px}
+  .slot-meta{padding-left:0}
+  .slot-meta span{white-space:normal}
   .tl-key{padding-left:24px;font-size:10px;letter-spacing:.13em}
+  .ipc-panel{padding:16px 17px 17px;font-size:13.4px}
+  .ipc-code{font-size:12.6px}
+  .ipc-run{font-size:12.1px}
   .check{padding:14px 15px}
   .appendix{padding:24px 18px 22px;border-radius:var(--r-md)}
   .day{grid-template-columns:1fr;gap:2px;padding-left:16px}
@@ -959,6 +1042,49 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
     color:var(--muted);
   }
   #zones .tbl td:nth-child(3){font-size:13.8px;line-height:1.68;color:var(--body)}
+
+  /* schedule: one quiet card per teaching slot */
+  #schedule .tbl-wrap{background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible}
+  #schedule .tbl{display:block;width:100%;min-width:0;font-size:15px}
+  #schedule .tbl thead{display:none}
+  #schedule .tbl tbody{display:block}
+  #schedule .tbl tbody tr{
+    display:block;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--r-sm);
+    padding:13px 15px 14px;
+    margin:0 0 8px;
+    box-shadow:var(--sh-1);
+  }
+  #schedule .tbl tbody tr:last-child{margin-bottom:0}
+  #schedule .tbl td{
+    display:block;
+    padding:0;
+    border:0;
+    background:transparent !important;
+    overflow-wrap:break-word;
+    word-break:normal;
+  }
+  #schedule .tbl td:first-child{
+    font-family:var(--sans);
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.065em;
+    line-height:1.5;
+    color:var(--muted);
+    white-space:normal;
+  }
+  #schedule .tbl td:nth-child(2){
+    margin:2px 0 3px;
+    font-size:15px;
+    font-weight:600;
+    line-height:1.55;
+    color:var(--ink);
+  }
+  #schedule .tbl td:nth-child(3){font-size:13.4px;line-height:1.66;color:var(--body)}
+  .closing{padding:16px 16px 17px}
+  .closing p{font-size:13.3px}
 
   /* three-column reference tables wrap inside the viewport */
   #contact .tbl,#appendix .tbl{
@@ -1134,12 +1260,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
     background:#fff;
   }
   .tbl{display:table;width:100%;font-size:8.5pt;min-width:0;table-layout:auto}
-  #overview .tbl,#zones .tbl,#contact .tbl,#appendix .tbl{display:table;table-layout:auto}
-  #overview .tbl thead{display:table-header-group}
-  #overview .tbl tbody{display:table-row-group}
-  #overview .tbl tr{display:table-row}
-  #overview .tbl th{display:table-cell}
-  #overview .tbl td{display:table-cell}
+  #overview .tbl,#zones .tbl,#contact .tbl,#appendix .tbl,#schedule .tbl{display:table;table-layout:auto}
+  #overview .tbl thead,#schedule .tbl thead{display:table-header-group}
+  #overview .tbl tbody,#schedule .tbl tbody{display:table-row-group}
+  #overview .tbl tr,#schedule .tbl tr{display:table-row}
+  #overview .tbl th,#schedule .tbl th{display:table-cell}
+  #overview .tbl td,#schedule .tbl td{display:table-cell}
   .tbl th{
     position:static;
     background:#F1F1EE !important;
@@ -1175,6 +1301,23 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   .callout.amber{border-left-color:#805405}
   .callout.teal{border-left-color:#0D6B62}
 
+  .ipc-panel{
+    break-inside:avoid;
+    page-break-inside:avoid;
+    padding:2.2mm 3mm;
+    margin-top:2.5mm;
+    border:.6pt solid #D5D5D5;
+    border-left:2pt solid #0D6B62;
+    border-radius:3pt;
+    box-shadow:none;
+    font-size:8pt;
+    line-height:1.5;
+  }
+  .ipc-panel p+p{margin-top:1mm}
+  .ipc-place,.ipc-run{color:#555}
+  .ipc-code{font-size:7.7pt}
+  .ipc-run{font-size:7.5pt;padding-top:1.2mm;margin-top:1.5mm !important}
+
   .chip{
     border:.5pt solid #CFCFCF;
     background:#FAFAFA !important;
@@ -1207,8 +1350,25 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   }
   .tl-date{font-size:9pt}
   .slot-time{font-size:8.8pt}
+  .slot-meta{font-size:7.2pt;line-height:1.4;padding-left:0;margin-top:.6mm;color:#555}
+  .slot-floor{color:#666}
   .tl-note{font-size:8.2pt;color:#555}
   .tl-key{padding:0 0 1.5mm 4mm;border-bottom:.5pt solid #CCC;font-size:6.8pt;break-after:avoid}
+  .schedule-note{font-size:7.8pt;line-height:1.5;margin-top:2mm;color:#555}
+  .closing{
+    break-inside:avoid;
+    page-break-inside:avoid;
+    margin-top:3mm;
+    padding:2.5mm 3mm;
+    border:.6pt solid #D8D8D8;
+    border-left:2pt solid #806124;
+    border-radius:3pt;
+    box-shadow:none;
+    background:#fff;
+  }
+  .closing h3{font-size:9pt;margin:0 0 1.2mm}
+  .closing p{font-size:8pt;line-height:1.5}
+  .closing p+p{margin-top:1mm}
 
   #check{break-inside:avoid;page-break-inside:avoid}
   .checklist{gap:1.5mm}
@@ -1292,6 +1452,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   <a href="#score">การประเมินผล</a>
   <a href="#shift">เวร</a>
   <a href="#ward">วอร์ด</a>
+  <a href="#schedule">ตารางสอน G-Trauma (3000537)</a>
   <a href="#rules">กฎใน ER</a>
   <a href="#zones">โซน</a>
   <a href="#topics">หัวข้อสอบ</a>
@@ -1332,7 +1493,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
     <div class="card"><h3>ความรู้ 40 คะแนน</h3><p>MCQ 30 ข้อ = 30 · SAQ 5 ข้อ = 10<br><span class="chip">modified Ebel</span></p></div>
     <div class="card"><h3>สถานการณ์จำลอง 30 คะแนน</h3><p>OSCE 2 สถานี = 20 · Case discussion (bedside) = 10<br><span class="chip">modified Angoff</span></p></div>
     <div class="card"><h3>พฤติกรรม 30 คะแนน</h3><p>Longitudinal observation by residents 15 · On-duty attendance 15<br><span class="chip">Angoff หรือ 60%</span></p></div>
-    <div class="card"><h3>Assignment</h3><p>IPC for patient safety · S/U · 19 พ.ย. 08.00–12.00</p></div>
+    <div class="card"><h3>Assignment</h3><p>IPC for patient safety · S/U · 19 พ.ย. 08.30–12.00</p></div>
+  </div>
+  <div class="ipc-panel">
+    <p class="ipc-when">IPC for patient safety · 19 พ.ย. 08.30–12.00</p>
+    <p class="ipc-place">ห้องปฏิบัติการ ชั้น 6 สถาบันการพยาบาลศรีสวรินทิรา สภากาชาดไทย</p>
+    <p class="ipc-code">รหัสลงทะเบียนคอร์ส MOOC: MDCU77 · คอร์ส MyCourseVille 37268 (movie + MOOC + แบบประเมิน → certificate) · วิธีเล่นเกม ER-VIPE: youtu.be/VOeRxbPvwCI</p>
+    <p class="ipc-run">08.30–08.35 orientation/แบ่งกลุ่ม · 08.35–09.15 ice breaking · 09.15–09.30 non-technical skill · 09.30–09.45 สอนเกม ER crowding · 09.45–10.45 เล่น 3 รอบ รอบละ 10 นาที + debrief · 10.45–11.30 debrief รวม · 11.30–12.00 summary</p>
   </div>
   <div class="callout amber">
     <strong>เงื่อนไขการได้ F:</strong> คะแนนส่วนใดส่วนหนึ่งต่ำกว่า MPL · แก้ตัวได้ 1 ครั้งต่อการประเมิน (MCQ, SAQ, OSCE) ถ้าแก้แล้วยังไม่ผ่านถือเป็น F<br>
@@ -1345,7 +1512,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   <div class="sec-head">
     <span class="sec-num" aria-hidden="true">03</span>
     <h2>เวร</h2>
-    <p class="sub">สแกนนิ้วเข้าและออกทุกเวร · หลังลงเวรส่งใบประเมินการปฏิบัติงานให้แพทย์ประจำบ้านเซ็น</p>
+    <p class="sub">สแกนนิ้วเข้าและออกทุกเวร</p>
   </div>
 
   <p class="tl-key">
@@ -1360,8 +1527,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
       <div class="tl-date">จ. 2 พ.ย.</div>
       <div class="tl-body">
         <div class="tl-slots">
-          <div class="slot"><span class="slot-time">08.00–16.00</span><span class="chip zone">Non-trauma</span></div>
-          <div class="slot"><span class="slot-time">16.00–24.00</span><span class="chip zone">Non-trauma</span></div>
+          <div class="slot">
+            <span class="slot-time">08.00–16.00</span><span class="chip zone">Non-trauma</span>
+            <span class="slot-meta"><span>อาจารย์เวร 08–16 อ.ขวัญศิริ</span><span class="slot-floor">On floor อ.ธนวัฒน์</span></span>
+          </div>
+          <div class="slot">
+            <span class="slot-time">16.00–24.00</span><span class="chip zone">Non-trauma</span>
+            <span class="slot-meta"><span>อาจารย์เวร 16–24 อ.นรวิชญ์</span><span class="slot-floor">On floor อ.ธนวัฒน์</span></span>
+          </div>
         </div>
         <p class="tl-note">Orientation 08.15 รับเวรก่อน 08.00</p>
       </div>
@@ -1370,7 +1543,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
       <div class="tl-date">อา. 8 พ.ย.</div>
       <div class="tl-body">
         <div class="tl-slots">
-          <div class="slot"><span class="slot-time">08.00–16.00</span><span class="chip zone">Non-trauma</span></div>
+          <div class="slot">
+            <span class="slot-time">08.00–16.00</span><span class="chip zone">Non-trauma</span>
+            <span class="slot-meta"><span>อาจารย์เวร 08–16 อ.ครองวงศ์</span></span>
+          </div>
         </div>
         <p class="tl-note">วันหยุด ไม่ต้องพรีเคส ยกเว้นอาจารย์ปวีณอร</p>
       </div>
@@ -1379,8 +1555,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
       <div class="tl-date">จ. 9 พ.ย.</div>
       <div class="tl-body">
         <div class="tl-slots">
-          <div class="slot"><span class="slot-time">08.00–16.00</span><span class="chip zone">Trauma</span></div>
-          <div class="slot"><span class="slot-time">16.00–24.00</span><span class="chip zone">Non-trauma</span></div>
+          <div class="slot">
+            <span class="slot-time">08.00–16.00</span><span class="chip zone">Trauma</span>
+            <span class="slot-meta"><span>อาจารย์เวร 08–16 อ.ภควดี (Trauma)</span><span class="slot-floor">On floor อ.ภัทรพล</span></span>
+          </div>
+          <div class="slot">
+            <span class="slot-time">16.00–24.00</span><span class="chip zone">Non-trauma</span>
+            <span class="slot-meta"><span>อาจารย์เวร 16–24 อ.นรวิชญ์</span><span class="slot-floor">On floor อ.ภัทรพล</span></span>
+          </div>
         </div>
         <p class="tl-note">วันเดียวอยู่ทั้งสองโซน</p>
       </div>
@@ -1389,17 +1571,26 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
       <div class="tl-date">พฤ. 19 พ.ย.</div>
       <div class="tl-body">
         <div class="tl-slots">
-          <div class="slot"><span class="slot-time">16.00–24.00</span><span class="chip zone">Non-trauma</span></div>
+          <div class="slot">
+            <span class="slot-time">16.00–24.00</span><span class="chip zone">Non-trauma</span>
+            <span class="slot-meta"><span>อาจารย์เวร 16–24 อ.คมสันติ</span><span class="slot-floor">On floor อ.ครองวงศ์</span></span>
+          </div>
         </div>
-        <p class="tl-note">มี IPC 08.00–12.00 และ EBM 13.00–16.00 ก่อนขึ้นเวร</p>
+        <p class="tl-note">มี IPC 08.30–12.00 และ EBM 13.00–16.00 ก่อนขึ้นเวร</p>
       </div>
     </li>
     <li class="tl-item">
       <div class="tl-date">ส. 21 พ.ย.</div>
       <div class="tl-body">
         <div class="tl-slots">
-          <div class="slot"><span class="slot-time">08.00–16.00</span><span class="chip zone">Non-trauma</span></div>
-          <div class="slot"><span class="slot-time">16.00–24.00</span><span class="chip zone">Non-trauma</span></div>
+          <div class="slot">
+            <span class="slot-time">08.00–16.00</span><span class="chip zone">Non-trauma</span>
+            <span class="slot-meta"><span>อาจารย์เวร 08–16 อ.นรวิชญ์</span></span>
+          </div>
+          <div class="slot">
+            <span class="slot-time">16.00–24.00</span><span class="chip zone">Non-trauma</span>
+            <span class="slot-meta"><span>อาจารย์เวร 16–24 อ.นรวิชญ์</span></span>
+          </div>
         </div>
         <p class="tl-note">วันหยุด ไม่ต้องพรีเคส</p>
       </div>
@@ -1408,8 +1599,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
       <div class="tl-date">จ. 23 พ.ย.</div>
       <div class="tl-body">
         <div class="tl-slots">
-          <div class="slot"><span class="slot-time">08.00–16.00</span><span class="chip zone">Non-trauma</span></div>
-          <div class="slot"><span class="slot-time">16.00–24.00</span><span class="chip zone">Non-trauma</span></div>
+          <div class="slot">
+            <span class="slot-time">08.00–16.00</span><span class="chip zone">Non-trauma</span>
+            <span class="slot-meta"><span>อาจารย์เวร 08–16 อ.ภควดี</span><span class="slot-floor">On floor อ.ธนวัฒน์</span></span>
+          </div>
+          <div class="slot">
+            <span class="slot-time">16.00–24.00</span><span class="chip zone">Non-trauma</span>
+            <span class="slot-meta"><span>อาจารย์เวร 16–24 อ.ครองวงศ์</span><span class="slot-floor">On floor อ.ธนวัฒน์</span></span>
+          </div>
         </div>
         <p class="tl-note">เช้าวันถัดมาราวน์ 06.45</p>
       </div>
@@ -1418,7 +1615,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
       <div class="tl-date">พ. 25 พ.ย.</div>
       <div class="tl-body">
         <div class="tl-slots">
-          <div class="slot"><span class="slot-time">16.00–24.00</span><span class="chip zone">Non-trauma</span></div>
+          <div class="slot">
+            <span class="slot-time">16.00–24.00</span><span class="chip zone">Non-trauma</span>
+            <span class="slot-meta"><span>อาจารย์เวร 16–24 อ.ธนดล</span><span class="slot-floor">On floor อ.ธนดล</span></span>
+          </div>
         </div>
         <p class="tl-note">วอร์ด 08.00–16.00 ต่อด้วยเวร</p>
       </div>
@@ -1427,7 +1627,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
       <div class="tl-date">พฤ. 26 พ.ย.</div>
       <div class="tl-body">
         <div class="tl-slots">
-          <div class="slot"><span class="slot-time">16.00–24.00</span><span class="chip zone">Non-trauma</span></div>
+          <div class="slot">
+            <span class="slot-time">16.00–24.00</span><span class="chip zone">Non-trauma</span>
+            <span class="slot-meta"><span>อาจารย์เวร 16–24 อ.ธนวัฒน์</span><span class="slot-floor">On floor อ.สุธาพร</span></span>
+          </div>
         </div>
         <p class="tl-note">ว่างช่วงเช้า มี EBM 13.00–16.00</p>
       </div>
@@ -1437,7 +1640,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   <div class="callout">
     <strong>มาสาย:</strong> ต่ำกว่า 10 นาที อยู่เวรเพิ่ม 1 ชั่วโมง · 10–30 นาที เพิ่ม 4 ชั่วโมง · เกิน 30 นาที เพิ่ม 1 เวร · ขาดเวรโดยไม่แจ้ง เพิ่ม 2 เวร<br>
     <strong>ขาดหรือป่วย:</strong> แจ้งคุณสุรชัย 081-5526254 และแพทย์ประจำบ้านหรืออาจารย์ก่อนถึงเวลาเวร<br>
-    <strong>แลกเวร:</strong> แลกข้ามโซน trauma กับ non-trauma ไม่ได้ · จำนวนนิสิตต่อเวร 4–6 คน
+    <strong>แลกเวร:</strong> แลกข้ามโซน trauma กับ non-trauma ไม่ได้ · จำนวนนิสิตต่อเวร 4–6 คน<br>
+    <strong>ใบประเมิน:</strong> ให้พี่เด้นประเมินอย่างน้อย 2 ครั้งใน 1 เดือน (เลือกพี่เด้นคนไหนก็ได้ ทั้ง trauma และ non-trauma) · ใบประเมินหลัง present non-trauma ให้อาจารย์ · หยิบใบได้ข้างจุดสแกนนิ้ว<br>
+    รับ–ส่งเวร 08.00 และ 16.00 · ชุดสครับใส่ได้นอกเวลา (วันธรรมดาหลัง 16.00 และวันหยุด) · เวรเสาร์–อาทิตย์เป็น Non-trauma และไม่มีการพรีเซ้น · เลือกเคสรออาจารย์แจ้ง (ค่าเริ่มต้น ~2 เคส)
   </div>
 </section>
 
@@ -1455,9 +1660,33 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   </div>
 </section>
 
-<section id="rules">
+<section id="schedule">
   <div class="sec-head">
     <span class="sec-num" aria-hidden="true">05</span>
+    <h2 id="schedule-title">ตารางสอน <span class="course-name">G-Trauma</span> (3000537)</h2>
+  </div>
+  <div class="tbl-wrap" tabindex="0" role="region" aria-labelledby="schedule-title">
+  <table class="tbl">
+    <colgroup><col class="col-time"><col class="col-act"><col class="col-place"></colgroup>
+    <thead><tr><th scope="col">เวลา</th><th scope="col">กิจกรรม</th><th scope="col">สถานที่ / อาจารย์</th></tr></thead>
+    <tbody>
+    <tr><td>09.00 (อังคาร)</td><td>Grand round (ทุกคนต้องมา)</td><td>วอร์ด G-trauma 16A1</td></tr>
+    <tr><td>09.30–12.00 (อังคาร)</td><td>Journal Club</td><td>อ.ศุภฤกษ์ · อาคารภูมิสิริ ชั้น 16</td></tr>
+    <tr><td>13.00–16.00 (อังคาร)</td><td>Bedside teaching</td><td>อ.ณฐวรรธ / อ.พสุเชษฐ์ · อาคารรัตนวิทยพัฒน์ ชั้น 13 ห้อง 1306A</td></tr>
+    <tr><td>09.30–12.00 (พุธ)</td><td>Workshop resident</td><td>สธ. ชั้น 16</td></tr>
+    <tr><td>13.30 (พุธ)</td><td>Ward round</td><td>อ.กฤตยา · อาคารรัตนวิทยพัฒน์ ชั้น 13</td></tr>
+    <tr><td>09.30–12.00 (ศุกร์)</td><td>Bedside teaching</td><td>อ.ศุภฤกษ์ · อาคารภูมิสิริ ชั้น 16</td></tr>
+    <tr><td>10.30 (ศุกร์)</td><td>Bedside teaching</td><td>อ.สุกัญญา · อาคารรัตนวิทยพัฒน์ ชั้น 13</td></tr>
+    <tr><td>13.00–16.00 (ศุกร์)</td><td>Bedside teaching</td><td>อ.ปัณฑิตา · อาคารรัตนวิทยพัฒน์ ชั้น 13</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="schedule-note">ส่วนใหญ่เป็น lecture ไม่ต้องเตรียมเคส ยกเว้น อ.สุกัญญา ที่มีพรีเซ้นเคสสัปดาห์สุดท้าย · เวลาอาจเปลี่ยนวันต่อวัน รอพี่ธุรการแจ้ง</p>
+</section>
+
+<section id="rules">
+  <div class="sec-head">
+    <span class="sec-num" aria-hidden="true">06</span>
     <h2>กฎในห้องฉุกเฉิน</h2>
   </div>
   <div class="grid">
@@ -1476,7 +1705,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
 
 <section id="zones">
   <div class="sec-head">
-    <span class="sec-num" aria-hidden="true">06</span>
+    <span class="sec-num" aria-hidden="true">07</span>
     <h2 id="zones-title">โซนการทำงาน</h2>
   </div>
   <div class="tbl-wrap" tabindex="0" role="region" aria-labelledby="zones-title">
@@ -1496,7 +1725,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
 
 <section id="topics">
   <div class="sec-head">
-    <span class="sec-num" aria-hidden="true">07</span>
+    <span class="sec-num" aria-hidden="true">08</span>
     <h2>หัวข้อที่ใช้สอบ</h2>
     <p class="sub">ตามที่ระบุในเอกสารปฐมนิเทศของรายวิชา</p>
   </div>
@@ -1519,7 +1748,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
 
 <section id="contact">
   <div class="sec-head">
-    <span class="sec-num" aria-hidden="true">08</span>
+    <span class="sec-num" aria-hidden="true">09</span>
     <h2 id="contact-title">ติดต่อ</h2>
   </div>
   <div class="tbl-wrap" tabindex="0" role="region" aria-labelledby="contact-title">
@@ -1536,14 +1765,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
 
 <section id="check">
   <div class="sec-head">
-    <span class="sec-num" aria-hidden="true">09</span>
+    <span class="sec-num" aria-hidden="true">10</span>
     <h2>Checklist</h2>
   </div>
   <div class="checklist">
   <label class="check"><input type="checkbox" data-k="c1"> เตรียมเคสนำเสนอให้พี่แพร (4, 13, 24 พ.ย.)</label>
-  <label class="check"><input type="checkbox" data-k="c2"> ยืนยันเรื่องใบประเมินการปฏิบัติงานทุกเวรกับแพทย์ประจำบ้าน</label>
+  <label class="check"><input type="checkbox" data-k="c2"> ยืนยันใบประเมิน: ให้พี่เด้นประเมิน ≥2 ครั้ง/เดือน (เลือกคนไหนก็ได้)</label>
   <label class="check"><input type="checkbox" data-k="c3"> นำเสนอเคสกับอาจารย์อย่างน้อย 1 ครั้งภายใน 4 สัปดาห์</label>
-  <label class="check"><input type="checkbox" data-k="c4"> เข้าร่วม IPC for patient safety 19 พ.ย. 08.00–12.00</label>
+  <label class="check"><input type="checkbox" data-k="c4"> เข้าร่วม IPC for patient safety 19 พ.ย. 08.30–12.00</label>
   <label class="check"><input type="checkbox" data-k="c5"> ตรวจสอบว่ามีวิดีโอบรรยายเพิ่มใน Media gallery หรือยัง</label>
   <label class="check"><input type="checkbox" data-k="c6"> ตรวจสอบตารางราวน์และเวลา activity ของอาจารย์ประจำวัน</label>
   </div>
@@ -1551,7 +1780,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
 
 <section id="appendix" class="appendix">
   <div class="sec-head">
-    <span class="sec-num" aria-hidden="true">10</span>
+    <span class="sec-num" aria-hidden="true">11</span>
     <h2 id="appendix-title">ภาคผนวก · ตารางทบทวน (เสริม)</h2>
     <p class="sub">ไม่ได้เป็นส่วนหนึ่งของการปฏิบัติงาน ใช้เมื่อมีเวลาในเวรหรือช่วงเช้าที่ว่าง</p>
   </div>
@@ -1580,6 +1809,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
     <tr><td>21–23 ธ.ค.</td><td>ทบทวนหัวข้อที่ยังอ่อน</td><td>ทำ mock MCQ 1 ชุด</td></tr>
     </tbody>
   </table>
+  </div>
+
+  <div class="closing">
+    <h3>งานส่งท้ายบล็อค</h3>
+    <p>ศุกร์ 27 พ.ย. ก่อน 12.00 · ห้อง 1301 ชั้น 13 อาคารรัตนวิทยพัฒน์ · แม็กเรียง: 1) ใบปะหน้า (คะแนนประเมิน) 2) Case report (เขียนนอก DocQ ได้ · ภาษาไทย · ฟอนต์ไม่เล็กเกินไป) 3) ใบ certificate Chula MOOC trauma (course 13219)</p>
+    <p>Cadaver workshop (rot C): 22 ธ.ค. 69 10.00–12.00 · เรียนรวม · สถานที่รอประกาศ</p>
   </div>
 </section>
 
