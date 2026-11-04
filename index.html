@@ -1899,6 +1899,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   <a href="#trauma">Trauma</a>
   <a href="#plan">แผน</a>
   <a href="#contact">ติดต่อ</a>
+  <a href="https://plub-supanut.github.io/" target="_blank" rel="noopener noreferrer">ผลิตภัณฑ์</a>
 </div></nav>
 
 <main class="wrap">
@@ -2408,7 +2409,8 @@ document.querySelectorAll('.check input').forEach(function(b){
 <script>
 /* scroll-spy + reading progress: vanilla, no dependencies */
 (function(){
-  var links=[].slice.call(document.querySelectorAll('#nav .nav-inner > a'));
+  /* เฉพาะลิงก์ในหน้า (href="#...") — ลิงก์ออกนอกเว็บต้องไม่ถูกเอาไปใช้เป็น selector */
+  var links=[].slice.call(document.querySelectorAll('#nav .nav-inner > a[href^="#"]'));
   if(!links.length) return;
   var nav=document.getElementById('nav');
   var bar=document.getElementById('navProgress');
