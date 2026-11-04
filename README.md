@@ -2,7 +2,7 @@
 
 คู่มือรายวิชา 3000539 Emergency Medicine I บล็อก ER & Trauma (2–29 พ.ย. 2569) — ตารางเวร ER, วอร์ด G-trauma 16A1, เกณฑ์ประเมิน และงานส่งท้ายบล็อค รวมไว้หน้าเดียว
 
-**[เปิดเว็บ →](https://plub-supanut.github.io/mdcu-er-trauma-2569/)** · **[ผลิตภัณฑ์อื่น ๆ →](https://plub-supanut.github.io/)**
+**[เปิดเว็บ →](https://plub-supanut.github.io/mdcu-er-trauma-2569/)** · **[ลิงก์อื่น ๆ →](https://plub-supanut.github.io/)**
 
 ## เว็บนี้คืออะไร
 
@@ -46,7 +46,7 @@ python -m http.server 8080     # แล้วเปิด http://127.0.0.1:8080
 ไม่มี dependency ไม่มี build ไม่มี test suite — แก้ `index.html` แล้ว commit ได้เลย
 ก่อน commit ควรเปิดหน้าเว็บตรวจ 3 อย่าง: สารบัญเลื่อนตามหัวข้อได้ · ปุ่มพิมพ์ขึ้น dialog · ธีมมืดยังอ่านง่าย
 
-## ผลิตภัณฑ์อื่น ๆ
+## ลิงก์อื่น ๆ
 
 โปรเจกต์อื่น ๆ รวมไว้ที่ **[plub-supanut.github.io](https://plub-supanut.github.io/)** — hub เดียวสำหรับทุกเว็บ
 เช่น [คู่มือ Elective นิสิตแพทย์จุฬาฯ](https://plub-supanut.github.io/elective-guide/)
