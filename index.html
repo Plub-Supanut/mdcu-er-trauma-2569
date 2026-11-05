@@ -7,6 +7,26 @@
 <meta name="theme-color" content="#F8F5EE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0A0D11" media="(prefers-color-scheme: dark)">
 <title>ER &amp; Trauma 2569 · คู่มือปฏิบัติงาน</title>
+<meta name="description" content="คู่มือปฏิบัติงาน ER &amp; Trauma บล็อค 2 ปี 2569 · 3000539 Emergency Medicine และ 3000537 Traumatology">
+<meta name="application-name" content="ER &amp; Trauma 2569">
+<meta name="apple-mobile-web-app-title" content="ER &amp; Trauma">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="assets/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ER &amp; Trauma 2569 · คู่มือปฏิบัติงาน">
+<meta property="og:description" content="3000539 Emergency Medicine · 3000537 Traumatology · Field guide 2569">
+<meta property="og:image" content="assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ER &amp; Trauma logo and course strip">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ER &amp; Trauma 2569 · คู่มือปฏิบัติงาน">
+<meta name="twitter:description" content="3000539 Emergency Medicine · 3000537 Traumatology · Field guide 2569">
+<meta name="twitter:image" content="assets/og-card.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -281,6 +301,75 @@ h1{
   opacity:.9;
 }
 
+/* ---------- identity ---------- */
+.hero-brand-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  margin:0 0 22px;
+}
+.hero-brand-row .kicker{margin:0}
+.brand-lockup{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  flex:none;
+  text-decoration:none;
+  transition:transform .22s var(--ease-out);
+}
+.brand-lockup:hover{transform:translateY(-1px)}
+.brand-mark{
+  display:block;
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  box-shadow:0 12px 26px -16px rgba(0,0,0,.7);
+  flex:none;
+}
+.brand-type{display:flex;flex-direction:column;min-width:0;line-height:1}
+.brand-name{
+  font-family:var(--serif);
+  font-size:13.5px;
+  font-weight:600;
+  letter-spacing:.095em;
+  line-height:1.15;
+  color:var(--ink);
+  white-space:nowrap;
+}
+.brand-amp{color:var(--gold)}
+.brand-sub{
+  margin-top:5px;
+  font-size:8.5px;
+  font-weight:600;
+  letter-spacing:.2em;
+  line-height:1.35;
+  text-transform:uppercase;
+  color:var(--muted);
+  white-space:nowrap;
+}
+.brand-lockup--hero .brand-name{color:#FFFDF8}
+.brand-lockup--hero .brand-amp{color:var(--gold-2)}
+.brand-lockup--hero .brand-sub{color:rgba(246,242,234,.56)}
+.nav-brand{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:none;
+  padding:0 14px 0 0;
+  margin-right:6px;
+  border-right:1px solid var(--line);
+}
+.nav-brand img{
+  display:block;
+  width:28px;
+  height:28px;
+  border-radius:8px;
+  box-shadow:0 4px 10px -7px rgba(16,20,25,.55);
+}
+.nav-brand:hover{background:none}
+.nav-brand::after{display:none}
+
 /* ---------- nav ---------- */
 nav{
   --nav-active:#8B1E31;
@@ -304,10 +393,17 @@ nav{
     background:rgba(10,13,17,.88);
   }
 }
-.nav-inner{
+.nav-bar{
   max-width:1080px;
   margin:0 auto;
   padding:0 28px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.nav-inner{
+  flex:1;
+  min-width:0;
   display:flex;
   gap:4px;
   overflow-x:auto;
@@ -1150,6 +1246,18 @@ footer{
   line-height:1.85;
   font-variant-numeric:tabular-nums;
 }
+.footer-brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  margin:0 0 17px;
+  padding-bottom:16px;
+  border-bottom:1px solid var(--line);
+}
+.footer-brand .brand-mark{width:34px;height:34px;border-radius:9px;box-shadow:none}
+.footer-brand .brand-name{font-size:12.5px}
+.footer-brand .brand-sub{font-size:8px;margin-top:4px;letter-spacing:.16em}
+.footer-source{margin:0}
 footer code{
   font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   font-size:12.5px;
@@ -1203,7 +1311,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
 /* ---------- responsive ---------- */
 @media (max-width:900px){
   .wrap{padding:0 28px}
-  .nav-inner{padding:0 20px}
+  .nav-bar{padding:0 20px}
 }
 @media (max-width:1280px){
   .btn{
@@ -1218,8 +1326,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
 @media (max-width:720px){
   body{font-size:16px;line-height:1.72}
   .wrap{padding:0 20px}
-  .hero{padding:48px 0 40px}
-  .kicker{font-size:10.5px;letter-spacing:.13em;margin-bottom:18px;gap:8px 10px}
+  .hero{padding:44px 0 40px}
+  .hero-brand-row{flex-direction:column-reverse;align-items:flex-start;gap:14px;margin-bottom:18px}
+  .brand-lockup{gap:9px}
+  .brand-mark{width:38px;height:38px;border-radius:10px}
+  .brand-name{font-size:12px;letter-spacing:.08em}
+  .brand-sub{font-size:7.6px;margin-top:4px}
+  .nav-bar{padding:0 20px;gap:6px}
+  .nav-brand{padding-right:9px;margin-right:2px}
+  .nav-brand img{width:25px;height:25px;border-radius:7px}
+  .kicker{font-size:10.5px;letter-spacing:.13em;gap:8px 10px}
   .kicker::before{width:22px}
   h1{font-size:clamp(28px,8.2vw,40px);line-height:1.38;margin-bottom:16px}
   .lede{font-size:15.5px;line-height:1.75;max-width:none}
@@ -1271,6 +1387,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   .appendix{padding:24px 18px 22px;border-radius:var(--r-md)}
   .day{grid-template-columns:1fr;gap:2px;padding-left:16px}
   .day::before{top:18px}
+  .footer-brand{gap:9px;margin-bottom:14px;padding-bottom:13px}
+  .footer-brand .brand-mark{width:30px;height:30px;border-radius:8px}
+  .footer-brand .brand-name{font-size:11.5px}
   footer{padding:28px 0 8px}
 
   /* tables: reflow, never force a horizontal scroll for narrow columns */
@@ -1585,6 +1704,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
     margin-bottom:0;
   }
   .hero::after{display:none}
+  .hero-brand-row{margin:0 0 3mm;gap:6mm;align-items:center}
+  .hero-brand-row .kicker{margin:0}
+  .brand-lockup{gap:2.5mm}
+  .brand-mark{width:10mm;height:10mm;border-radius:2.4mm;box-shadow:none}
+  .brand-name,.brand-lockup--hero .brand-name{font-size:7.6pt;color:#111}
+  .brand-amp,.brand-lockup--hero .brand-amp{color:#806124}
+  .brand-sub,.brand-lockup--hero .brand-sub{font-size:5.6pt;color:#666;margin-top:.7mm}
   .kicker{color:#555 !important;font-size:7.4pt;letter-spacing:.14em;margin:0 0 2.5mm}
   .kicker::before{background:#999}
   h1{color:#000 !important;font-size:22pt;line-height:1.24;margin:0 0 2.5mm}
@@ -1859,6 +1985,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
     color:#666;
     break-inside:avoid;
   }
+  .footer-brand{margin:0 0 2mm;padding-bottom:1.5mm;gap:2mm}
+  .footer-brand .brand-mark{width:7mm;height:7mm;border-radius:1.6mm}
+  .footer-brand .brand-name{font-size:7pt}
+  .footer-brand .brand-sub{font-size:5pt;margin-top:.5mm}
+  .footer-source{margin:0}
   footer code{background:#F4F4F4;border-color:#DDD}
   a{color:inherit !important;text-decoration:none}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -1870,7 +2001,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
 <header class="hero">
   <div class="hero-grain" aria-hidden="true"></div>
   <div class="wrap hero-inner">
-    <p class="kicker">Year 5 · Block 2 · 3000539 Emergency Medicine I</p>
+    <div class="hero-brand-row">
+      <p class="kicker">Year 5 · Block 2 · 3000539 Emergency Medicine I</p>
+      <a class="brand-lockup brand-lockup--hero" href="#overview" aria-label="ER &amp; Trauma · ไปที่ภาพรวม">
+        <img class="brand-mark" src="assets/logo-mark.svg" alt="" width="44" height="44" decoding="async">
+        <span class="brand-type">
+          <span class="brand-name">ER <span class="brand-amp">&amp;</span> TRAUMA</span>
+          <span class="brand-sub">Field guide · 2569</span>
+        </span>
+      </a>
+    </div>
     <h1><span class="h1-latin">ER &amp; Trauma ·</span> <span class="h1-thai">คู่มือปฏิบัติงาน</span></h1>
     <div class="course-strip" aria-label="รายวิชาในบล็อค">
       <span class="course-chip"><span class="course-code">3000539</span> Emergency Medicine</span>
@@ -1893,12 +2033,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
   </div>
 </header>
 
-<nav id="nav" aria-label="สารบัญ"><div class="nav-progress" id="navProgress"></div><div class="nav-inner">
-  <a href="#overview">ภาพรวม</a>
-  <a href="#er">ER</a>
-  <a href="#trauma">Trauma</a>
-  <a href="#plan">แผน</a>
-  <a href="#contact">ติดต่อ</a>
+<nav id="nav" aria-label="สารบัญ"><div class="nav-progress" id="navProgress"></div><div class="nav-bar">
+  <a class="nav-brand" href="#overview" aria-label="ER &amp; Trauma · ภาพรวม"><img src="assets/logo-mark.svg" alt="" width="28" height="28" decoding="async"></a>
+  <div class="nav-inner">
+    <a href="#overview">ภาพรวม</a>
+    <a href="#er">ER</a>
+    <a href="#trauma">Trauma</a>
+    <a href="#plan">แผน</a>
+    <a href="#contact">ติดต่อ</a>
+  </div>
 </div></nav>
 
 <main class="wrap">
@@ -2389,8 +2532,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offs
 </section>
 
 <footer>
-  ที่มา: myCourseVille course 89649 · Course syllabus 3000539 ปี 2569 · เอกสารปฐมนิเทศ ER (ไฟล์ปี 2568) · ตารางเวรกลุ่ม 8 แท็บ “22 คน”<br>
-  ไฟล์ในเครื่อง: <code>Documents\MDCU\er-trauma\</code> · ปรับปรุง 1 พ.ย. 2569
+  <div class="footer-brand">
+    <img class="brand-mark" src="assets/logo-mark.svg" alt="" width="34" height="34" decoding="async">
+    <span class="brand-type">
+      <span class="brand-name">ER <span class="brand-amp">&amp;</span> TRAUMA</span>
+      <span class="brand-sub">3000539 · 3000537</span>
+    </span>
+  </div>
+  <p class="footer-source">ที่มา: myCourseVille course 89649 · Course syllabus 3000539 ปี 2569 · เอกสารปฐมนิเทศ ER (ไฟล์ปี 2568) · ตารางเวรกลุ่ม 8 แท็บ “22 คน”<br>
+  ไฟล์ในเครื่อง: <code>Documents\MDCU\er-trauma\</code> · ปรับปรุง 1 พ.ย. 2569</p>
 </footer>
 </main>
 

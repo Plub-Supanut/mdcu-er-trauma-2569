@@ -1,0 +1,14 @@
+{
+  "name": "ER & Trauma 2569 · Field Guide",
+  "short_name": "ER & Trauma",
+  "description": "คู่มือปฏิบัติงาน ER & Trauma บล็อค 2 ปี 2569",
+  "start_url": "../guide.html",
+  "scope": "../",
+  "display": "standalone",
+  "background_color": "#F8F5EE",
+  "theme_color": "#101419",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

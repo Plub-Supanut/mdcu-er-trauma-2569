@@ -51,6 +51,7 @@
 
 ```text
 index.html          หน้าเว็บทั้งหมด (HTML + CSS + JS)
+assets/             โลโก้ favicon web manifest และ OG card
 ER-Trauma-2569.pdf  PDF สำหรับพิมพ์/แชร์
 docs/preview.png    ภาพ preview
 .nojekyll           ปิด Jekyll บน GitHub Pages
